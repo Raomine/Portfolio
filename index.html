@@ -7,11 +7,21 @@
 
     <title>Hicham | Portfolio</title>
 
-    <link rel="stylesheet" href="index.css">
-    <script src="index.js" defer></script>
+    <link rel="stylesheet" href="/styles/index.css">
+    <script src="/script/index.js" defer></script>
 </head>
 
 <body>
+    <div id="overlay" class="overlay">
+    </div>
+    <div class="modal hidden" id="projectModal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <img id="modalImage" alt="Image du projet">
+            <p id="modalDescription"></p>
+        </div>
+    </div>
     <header>
         <div class="logo">
             <h1>Hicham</h1>
@@ -45,24 +55,22 @@
     <section id="skills">
         <h2>Compétences</h2>
         <div class="skills">
-            <div class="front">
+            <div class="front-end">
                 <h3>Front-end :</h3>
                 <ul>
                     <li>HTML5</li>
                     <li>CSS3 / Sass</li>
                     <li>JavaScript (ES6+)</li>
                     <li>React.js</li>
-                    <!-- Ajoutez d'autres compétences front-end selon vos connaissances -->
                 </ul>
             </div>
-            <div class="back">
+            <div class="back-end">
                 <h3>Back-end :</h3>
                 <ul>
                     <li>Node.js</li>
                     <li>Express.js</li>
                     <li>RESTful API</li>
                     <li>MongoDB</li>
-                    <!-- Ajoutez d'autres compétences back-end selon vos connaissances -->
                 </ul>
             </div>
         </div>
@@ -70,95 +78,86 @@
 
     <section id="projects">
         <h2>Projets</h2>
-        <!-- Liste de vos projets avec des liens vers les démos ou les dépôts GitHub -->
+
         <div class="project">
-            <img src="image-projet1.jpg" alt="Description de l'image du Projet 1">
-            <h3>Nom du Projet 1</h3>
-            <p>Description du projet.</p>
-            <a href="#">Voir la démo</a>
-            <a href="#">GitHub</a>
+            <img src="/assets/riding-cities.jpg" alt="Projet 2, riding cities">
+            <h3>Premiers pas sur le langage HTML</h3>
+            <button onclick="openModal()">Voir
+                Plus</button>
+            <a href="#" class="non-cliquable">GitHub</a>
         </div>
 
         <div class="project">
-            <img src="image-projet1.jpg" alt="Description de l'image du Projet 1">
-            <h3>Nom du Projet 2</h3>
-            <p>Description du projet.</p>
-            <a href="#">Voir la démo</a>
-            <a href="#">GitHub</a>
+            <img src="/assets/booki.jpg" alt="Projet 3, booki">
+            <h3>Créez la page d'accueil d'une agence de voyage avec HTML & CSS</h3>
+            <button onclick="openModal()">Voir
+                Plus</button>
+            <a href="#" class="non-cliquable">GitHub</a>
         </div>
 
         <div class="project">
-            <img src="image-projet1.jpg" alt="Description de l'image du Projet 1">
-            <h3>Nom du Projet 3</h3>
-            <p>Description du projet.</p>
-            <a href="#">Voir la démo</a>
-            <a href="#">GitHub</a>
+            <img src="/assets/ohmyfood.jpg" alt="Projet 4, ohmyfood">
+            <h3>Améliorez l'interface d'un site mobile avec des animations CSS</h3>
+            <button onclick="openModal()">Voir
+                Plus</button>
+            <a href="https://github.com/Raomine/Projet_4" target="_blank">GitHub</a>
         </div>
 
         <div class="project">
-            <img src="image-projet1.jpg" alt="Description de l'image du Projet 1">
-            <h3>Nom du Projet 4</h3>
-            <p>Description du projet.</p>
-            <a href="#">Voir la démo</a>
-            <a href="#">GitHub</a>
+            <img src="/assets/print-it.jpg" alt="Projet 5, print-it">
+            <h3>Premiers pas sur le langage JavaScript</h3>
+            <button onclick="openModal()">Voir
+                Plus</button>
+            <a href="https://github.com/Raomine/Projet_5" target="_blank">GitHub</a>
         </div>
 
         <div class="project">
-            <img src="image-projet1.jpg" alt="Description de l'image du Projet 1">
-            <h3>Nom du Projet 5</h3>
-            <p>Description du projet.</p>
-            <a href="#">Voir la démo</a>
-            <a href="#">GitHub</a>
+            <img src="/assets/sophie_bluel.jpg" alt="Projet 6, Sophie Bluel">
+            <h3>Créez une page web dynamique avec JavaScript</h3>
+            <button onclick="openModal()">Voir
+                Plus</button>
+            <a href="https://github.com/Raomine/Projet_6" target="_blank">GitHub</a>
         </div>
 
         <div class="project">
-            <img src="image-projet1.jpg" alt="Description de l'image du Projet 1">
-            <h3>Nom du Projet 6</h3>
-            <p>Description du projet.</p>
-            <a href="#">Voir la démo</a>
-            <a href="#">GitHub</a>
+            <img src="/assets/qwenta.jpg" alt="Projet 7, Menu Maker">
+            <h3>Planifiez le développement du site de votre client</h3>
+            <button onclick="openModal()">Voir
+                Plus</button>
+            <a href="#" class="non-cliquable">GitHub</a>
         </div>
 
         <div class="project">
-            <img src="image-projet1.jpg" alt="Description de l'image du Projet 1">
-            <h3>Nom du Projet 7</h3>
-            <p>Description du projet.</p>
-            <a href="#">Voir la démo</a>
-            <a href="#">GitHub</a>
+            <img src="/assets/kasa.jpg" alt="Projet 8, Kasa">
+            <h3>Créez une application web de location immobilière avec React</h3>
+            <button onclick="openModal()">Voir
+                Plus</button>
+            <a href="https://github.com/Raomine/Projet_8" target="_blank">GitHub</a>
         </div>
 
         <div class="project">
-            <img src="image-projet1.jpg" alt="Description de l'image du Projet 1">
-            <h3>Nom du Projet 8</h3>
-            <p>Description du projet.</p>
-            <a href="#">Voir la démo</a>
-            <a href="#">GitHub</a>
+            <img src="/assets/nina_carducci.jpg" alt="Projet 9, Nina Carducci">
+            <h3>Optimisez le référencement d'un site de photographe</h3>
+            <button onclick="openModal()">Voir
+                Plus</button>
+            <a href="https://github.com/Raomine/Projet_9" target="_blank">GitHub</a>
         </div>
 
         <div class="project">
-            <img src="image-projet1.jpg" alt="Description de l'image du Projet 1">
-            <h3>Nom du Projet 9</h3>
-            <p>Description du projet.</p>
-            <a href="#">Voir la démo</a>
-            <a href="#">GitHub</a>
+            <img src="/assets/77events.jpg" alt="Projet 10, 77events">
+            <h3>Débuggez le site d'une agence d'événementielt</h3>
+            <button onclick="openModal()">Voir
+                Plus</button>
+            <a href="https://github.com/Raomine/Projet_10" target="_blank">GitHub</a>
         </div>
 
         <div class="project">
-            <img src="image-projet1.jpg" alt="Description de l'image du Projet 1">
-            <h3>Nom du Projet 10</h3>
-            <p>Description du projet.</p>
-            <a href="#">Voir la démo</a>
-            <a href="#">GitHub</a>
+            <img src="/assets/argentbank.jpg" alt="Projet 11, Argent Bank">
+            <h3>Implémentez le front-end d'une application bancaire avec React</h3>
+            <button onclick="openModal()">Voir
+                Plus</button>
+            <a href="https://github.com/Raomine/Projet_11" target="_blank">GitHub</a>
         </div>
-
-        <div class="project">
-            <img src="image-projet1.jpg" alt="Description de l'image du Projet 1">
-            <h3>Nom du Projet 11</h3>
-            <p>Description du projet.</p>
-            <a href="#">Voir la démo</a>
-            <a href="#">GitHub</a>
-        </div>
-        <!-- Ajoutez d'autres projets au besoin -->
     </section>
 
     <section id="contact">
@@ -166,7 +165,6 @@
         <p>Contactez-moi pour discuter de projets, opportunités, etc.</p>
 
         <form action="" method="">
-            <!-- Remplacez "traitement_formulaire.php" par le script de traitement de votre formulaire côté serveur -->
             <label for="name">Nom :</label>
             <input type="text" id="name" name="name" required>
 
@@ -178,7 +176,6 @@
 
             <button type="submit">Envoyer</button>
         </form>
-        <!-- Ajoutez des liens vers vos profils de médias sociaux, un formulaire de contact, ou votre adresse e-mail -->
     </section>
 
     <footer>

@@ -54,6 +54,7 @@ header {
 }
 
 section {
+    min-height: 100vh;
     padding: 20px;
     box-sizing: border-box;
     border-bottom: 1px solid #ddd;
@@ -93,10 +94,69 @@ section {
     }
 
     .project {
-        width: calc(50% - 20px);
+        width: calc(50% - 10px);
         margin-bottom: 20px;
         box-sizing: border-box;
         break-inside: avoid;
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        overflow: hidden;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+
+        &:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        img {
+            width: 100%;
+            height: 500px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        h3,
+        p {
+            padding: 15px;
+            margin: 0;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px 15px;
+            text-align: center;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-top: 1px solid #ddd;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+
+            &:hover {
+                background-color: #555;
+            }
+        }
+
+        a {
+            display: block;
+            padding: 10px 15px;
+            text-align: center;
+            text-decoration: none;
+            background-color: #333;
+            color: #fff;
+            border-top: 1px solid #ddd;
+            transition: background-color 0.3s ease;
+
+            &:hover {
+                background-color: #555;
+            }
+        }
+
+        .non-cliquable {
+            pointer-events: none;
+            color: gray;
+        }
     }
 }
 
@@ -137,4 +197,42 @@ footer {
     color: white;
     padding: 20px;
     text-align: center;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1000;
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+
+    &-content {
+        max-width: 600px;
+        margin: 0 auto;
+    }
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    z-index: 999;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+    color: #888;
 }
