@@ -83,7 +83,6 @@ section {
 
         img {
             width: 550px;
-            /* Ajustez la taille selon vos besoins */
             border-radius: 50%;
             margin-right: 20px;
         }
@@ -102,33 +101,77 @@ section {
 
 #skills {
     .skills {
-        height: 900px;
+        height: 90vh;
         display: flex;
-        justify-content: space-around;
+        justify-content: space-between;
+
+        .front-end {
+            width: 45%;
+            height: 100%;
+        }
+
+        .back-end {
+            width: 45%;
+            height: 100%;
+        }
 
         ul {
             list-style: none;
             padding: 0;
             margin: 0;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+
         }
 
         li {
-            margin-bottom: 15px;
+            margin-bottom: 30px;
             position: relative;
+            font-size: 18px;
         }
 
         .skill-bar {
-            height: 10px;
-            background-color: #ddd;
-            border-radius: 5px;
-            overflow: hidden;
+            background-color: #eee;
+            border-radius: 10px;
+            height: 30px;
+            position: relative;
+            width: 0%;
+            animation: expandBar 1s ease forwards;
         }
 
         .skill-level {
-            height: 100%;
             background-color: #3498db;
-            /* Couleur de la barre de compétence */
+            height: 100%;
+            width: 0%;
+            transition: width 1s ease;
         }
+
+        .skill-level.loaded {
+            width: var(--skill-level);
+        }
+
+
+        .skill-percent {
+            position: absolute;
+            top: 0;
+            right: 10px;
+            color: #333;
+            font-size: 16px;
+            font-weight: bold;
+        }
+    }
+}
+
+@keyframes expandBar {
+    from {
+        width: 0%;
+    }
+
+    to {
+        width: var(--skill-level);
+        /* Se termine avec la largeur spécifiée */
     }
 }
 

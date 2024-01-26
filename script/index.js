@@ -75,35 +75,82 @@ let projects = {
       "../assets/P5-carousel4.jpg",
     ],
   },
+
   project6: {
     title: "Créez une page web dynamique avec JavaScript",
-    description: "Description du projet 2",
-    images: ["../assets/booki.jpg", "../assets/kasa.jpg"],
+    description: `Le projet consiste à créer une page web dynamique en utilisant JavaScript, en mettant en pratique les connaissances acquises sur ce langage. L'objectif était de réaliser plusieurs fonctionnalités (galerie d'images, page de connexion, modales) et de travailler avec des données dynamiques provenant d'une API.`,
+    images: [
+      "../assets/P6-gallerie.jpg",
+      "../assets/P6-login.jpg",
+      "../assets/P6-modale1.jpg",
+      "../assets/P6-modale2.jpg",
+    ],
   },
+
   project7: {
     title: "Planifiez le développement du site de votre client",
-    description: "Description du projet 2",
-    images: ["../assets/projet2-image1.jpg", "../assets/projet2-image2.jpg"],
+    description: `Mise en place d'une veille technique : J'ai effectué une recherche approfondie pour identifier les outils, langages et frameworks qui pourraient être utiles. Je les ai ensuite regroupé dans l'outils veille, Wakelet.
+    Définition des besoins techniques : J'ai identifié les besoins techniques du projet, en détaillant les plugins, les librairies et autres solutions nécessaires à sa réalisation.
+    Choix et configuration de l'outil de gestion de projet : J'ai sélectionné Trello, un outil de gestion de projet adapté.
+    Découpage des tâches : J'ai découpé le projet en différentes tâches, en me concentrant d'abord sur les user stories prioritaires.
+    Préparation de la présentation finale : Enfin, j'ai préparé les supports de présentation pour le client, en agrégeant les différents livrables dans une présentation PowerPoint`,
+    images: [
+      "../assets/P7-wakelet.jpg",
+      "../assets/P7-solutions-tech.jpg",
+      "../assets/P7-trello.jpg",
+      "../assets/P7-powerpoint.jpg",
+    ],
   },
+
   project8: {
     title: "Créez une application web de location immobilière avec React",
-    description: "Description du projet 2",
-    images: ["../assets/booki.jpg", "../assets/kasa.jpg"],
+    description:
+      "Le projet consiste à créer une application web de location immobilière avec React. Les étapes clés incluent l'initialisation du projet avec Create React App, l'ajout de React Router pour le routage, la création des pages principales (accueil, À propos, page d'erreur), le développement de fonctionnalités spécifiques comme le carrousel pour les propriétés, la gestion des erreurs d'ID, et enfin la vérification globale du site. À chaque étape, la mise en page est optimisée avec Sass et les composants sont réutilisés autant que possible.",
+    images: [
+      "../assets/P8-homepage.jpg",
+      "../assets/P8-about.jpg",
+      "../assets/P8-error.jpg",
+      "../assets/P8-logement.jpg",
+    ],
   },
+
   project9: {
     title: "Optimisez le référencement d'un site de photographe",
-    description: "Description du projet 2",
-    images: ["../assets/projet2-image1.jpg", "../assets/projet2-image2.jpg"],
+    description:
+      " J'ai, avec Lighthouse, analysé le code source, identifié les améliorations nécessaires, optimisé les performances, le SEO technique, intégré le référencement local et les réseaux sociaux, corrigé l'accessibilité, et généré des rapports finaux. Ce processus structuré a permis d'améliorer les performances et d'optimiser le référencement du site.",
+    images: [
+      "../assets/P9-site1.jpg",
+      "../assets/P9-site2.jpg",
+      "../assets/P9-site3.jpg",
+      "../assets/P9-site4.jpg",
+      "../assets/P9-site5.jpg",
+      "../assets/P9-lighthouse.jpg",
+    ],
   },
+
   project10: {
     title: "Débuggez le site d'une agence d'événementielt",
-    description: "Description du projet 2",
-    images: ["../assets/booki.jpg", "../assets/kasa.jpg"],
+    description:
+      "Dans ce projet de débogage pour une agence événementielle, j'ai suivi un processus méthodique en quatre étapes clés : mise en place de l'environnement de développement, identification et réparation des bugs, rédaction d'un cahier de recette, et ajout de tests supplémentaires.",
+    images: [
+      "../assets/P10-site1.jpg",
+      "../assets/P10-site2.jpg",
+      "../assets/P10-site3.jpg",
+      "../assets/P10-site4.jpg",
+      "../assets/P10-site5.jpg",
+      "../assets/P10-cahier-de-recette.jpg",
+    ],
   },
+
   project11: {
     title: "Implémentez le front-end d'une application bancaire avec React",
-    description: "Description du projet 2",
-    images: ["../assets/projet2-image1.jpg", "../assets/projet2-image2.jpg"],
+    description:
+      "Ce projet a consisté à développer une application bancaire avec React, Redux et une API. Le frontend est concis et réutilisable. J'ai mis en place l'authentification des utilisateurs, développé la fonctionnalité de modification du nom d'utilisateur. J'ai également ajouté des éléments à la documentation Swagger.",
+    images: [
+      "../assets/P11-homepage.jpg",
+      "../assets/P11-signin.jpg",
+      "../assets/P11-user.jpg",
+    ],
   },
 };
 
@@ -162,3 +209,35 @@ window.onclick = function (event) {
     document.body.style.overflow = "";
   }
 };
+
+function animateSkills() {
+  const skillBars = document.querySelectorAll(".skill-bar");
+  skillBars.forEach(function (bar) {
+    const skillLevel = bar.querySelector(".skill-level");
+    const rect = bar.getBoundingClientRect();
+
+    if (rect.top < window.innerHeight && rect.bottom >= 0) {
+      if (!skillLevel.classList.contains("loaded")) {
+        skillLevel.style.width = skillLevel.getAttribute("data-width");
+        skillLevel.classList.add("loaded");
+      }
+    } else {
+      skillLevel.classList.remove("loaded");
+    }
+  });
+}
+
+function isElementInViewport(el) {
+  const rect = el.getBoundingClientRect();
+  return (
+    rect.top >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom <=
+      (window.innerHeight || document.documentElement.clientHeight) &&
+    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+  );
+}
+
+document.addEventListener("DOMContentLoaded", animateSkills);
+
+document.addEventListener("scroll", animateSkills);
