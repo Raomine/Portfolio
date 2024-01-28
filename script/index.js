@@ -175,7 +175,6 @@ function updateModalContent() {
   let prevButton = document.querySelector(".prev");
   let nextButton = document.querySelector(".next");
 
-  // Affiche ou masque les boutons de navigation en fonction de la position de la diapositive
   prevButton.style.display = currentSlideIndex === 0 ? "none" : "block";
   nextButton.style.display =
     currentSlideIndex === currentProject.images.length - 1 ? "none" : "block";

@@ -1,3 +1,24 @@
+// Variables
+$violet: #6a0dad88;
+$grisArgente: #C0C0C0;
+$grisFonce: rgb(99, 96, 96);
+$violetDemi: #6a0dad7e;
+$grisArgenteDemi: #c0c0c080;
+
+// Mixins
+@mixin boxShadow($color: rgba(0, 0, 0, 0.3)) {
+    box-shadow: 0 4px 6px $color;
+}
+
+@mixin borderRadius($radius: 10px) {
+    border-radius: $radius;
+}
+
+@mixin transition($property, $duration: 0.3s, $timing: ease) {
+    transition: $property $duration $timing;
+}
+
+// Styles
 body {
     margin: 0;
     padding: 0;
@@ -9,11 +30,27 @@ h1,
 h2,
 h3 {
     font-family: 'Roboto', sans-serif;
-    color: #333;
+    color: $grisFonce;
+}
+
+h1::after,
+h2::after {
+    content: "";
+    display: block;
+    width: 70px;
+    padding-top: 3px;
+}
+
+h1::after {
+    border-bottom: 5px solid $grisArgente;
+}
+
+h2::after {
+    border-bottom: 3px solid $violet;
 }
 
 header {
-    background-color: #2c3e50;
+    background-color: $grisFonce;
     color: white;
     padding: 10px;
     position: fixed;
@@ -21,29 +58,59 @@ header {
     top: 0;
     z-index: 1000;
     display: flex;
-    justify-content: space-between;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    flex-direction: column;
+    align-items: center;
+
+    .logo-container {
+        background-color: $violet;
+        @include boxShadow;
+        @include borderRadius;
+        @include transition(transform);
+
+        &:hover {
+            transform: scale(1.05);
+        }
+    }
 
     .logo {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding: 10px;
 
-        img {
-            width: 350px;
-            height: 90px;
+        h1 {
+            font-size: 3em;
+            color: $grisArgente;
+            margin: 0;
+        }
+
+        p {
+            font-size: 1.2em;
+            color: $grisArgente;
+            padding-top: 20px;
         }
     }
 
     nav {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
         margin-top: 20px;
 
         a {
+            background-color: $grisArgente;
+            @include boxShadow;
+            @include borderRadius;
+            padding: 5px;
             text-decoration: none;
-            color: white;
+            color: $violet;
             font-weight: bold;
-            transition: color 0.3s ease;
+            @include transition(color);
             margin-right: 20px;
 
             &:hover {
-                color: #3498db;
+                color: white;
             }
         }
     }
@@ -57,22 +124,22 @@ section {
 
     &#about,
     &#projects {
-        background-color: #f8f8f8;
+        background-color: $violetDemi;
     }
 
     &#skills,
     &#contact {
-        background-color: #ecf0f1;
+        background-color: $grisArgenteDemi;
     }
 
     p {
-        color: #555;
+        color: $grisFonce;
         line-height: 1.8;
     }
 }
 
 #about {
-    margin-top: 117.59px;
+    margin-top: 184.69px;
 
     .profile {
         height: 900px;
@@ -88,14 +155,14 @@ section {
         }
 
         p {
-            color: #555;
+            color: $grisFonce;
             line-height: 1.8;
         }
     }
 
     a {
         text-decoration: none;
-        color: #3498db;
+        color: $violet;
     }
 }
 
@@ -133,7 +200,7 @@ section {
         }
 
         .skill-bar {
-            background-color: #eee;
+            background-color: $grisArgente;
             border-radius: 10px;
             height: 30px;
             position: relative;
@@ -142,7 +209,7 @@ section {
         }
 
         .skill-level {
-            background-color: #3498db;
+            background-color: $violet;
             height: 100%;
             width: 0%;
             transition: width 1s ease;
@@ -157,7 +224,7 @@ section {
             position: absolute;
             top: 0;
             right: 10px;
-            color: #333;
+            color: $grisFonce;
             font-size: 16px;
             font-weight: bold;
         }
@@ -178,7 +245,7 @@ section {
 #projects {
     display: flex;
     flex-wrap: wrap;
-    align-items: flex-start;
+    justify-content: space-around;
 
     h2 {
         width: 100%;
@@ -189,7 +256,7 @@ section {
         margin-bottom: 20px;
         box-sizing: border-box;
         break-inside: avoid;
-        background-color: #fff;
+        background-color: $grisArgenteDemi;
         border: 1px solid #ddd;
         border-radius: 8px;
         overflow: hidden;
@@ -221,15 +288,16 @@ section {
             width: 100%;
             padding: 10px 15px;
             text-align: center;
-            background-color: #e74c3c;
-            color: #fff;
+            background-color: $violetDemi;
+            color: $grisArgenteDemi;
             border: none;
             border-top: 1px solid #ddd;
             cursor: pointer;
             transition: background-color 0.3s ease;
 
             &:hover {
-                background-color: #c0392b;
+                background-color: $grisArgenteDemi;
+                color: $violetDemi;
             }
         }
 
@@ -238,13 +306,14 @@ section {
             padding: 10px 15px;
             text-align: center;
             text-decoration: none;
-            background-color: #333;
-            color: #3498db;
+            background-color: $grisArgenteDemi;
+            color: $violetDemi;
             border-top: 1px solid #ddd;
             transition: background-color 0.3s ease;
 
             &:hover {
-                background-color: #555;
+                background-color: $violetDemi;
+                color: $grisArgenteDemi;
             }
         }
 
@@ -261,7 +330,7 @@ form {
 
     label {
         margin-bottom: 10px;
-        color: #333;
+        color: $grisFonce;
     }
 
     input,
@@ -274,7 +343,7 @@ form {
 
     button {
         padding: 10px 20px;
-        background-color: #333;
+        background-color: $grisFonce;
         color: white;
         border: none;
         border-radius: 5px;
@@ -282,16 +351,41 @@ form {
         transition: background-color 0.3s ease;
 
         &:hover {
-            background-color: #555;
+            background-color: $grisArgente;
         }
     }
 }
 
 footer {
-    background-color: #34495e;
-    color: white;
+    background-color: $grisFonce;
+    color: $grisArgente;
     padding: 20px;
     text-align: center;
+
+    p {
+        margin-bottom: 10px;
+        font-size: 14px;
+    }
+
+    div {
+        margin-top: 20px;
+
+        span {
+            display: block;
+            font-weight: bold;
+            font-size: 16px;
+        }
+
+        a {
+            color: $violet;
+            text-decoration: underline;
+            transition: color 0.3s ease;
+
+            &:hover {
+                color: white;
+            }
+        }
+    }
 }
 
 .modal {
