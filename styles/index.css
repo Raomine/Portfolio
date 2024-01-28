@@ -1,4 +1,3 @@
-@charset "UTF-8";
 body {
   margin: 0;
   padding: 0;
@@ -188,7 +187,6 @@ section p {
   }
   to {
     width: var(--skill-level);
-    /* Se termine avec la largeur spécifiée */
   }
 }
 #projects {
@@ -329,6 +327,8 @@ footer div a:hover {
   padding: 20px;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  overflow-y: auto;
+  max-height: 80%;
 }
 .modal-content {
   max-width: 600px;
@@ -336,8 +336,8 @@ footer div a:hover {
 }
 .modal-content .carousel {
   position: relative;
-  max-width: 100%;
-  margin-top: 20px;
+  max-width: calc(100% - 40px);
+  margin: 20px auto;
 }
 .modal-content .carousel img {
   width: 100%;
@@ -358,17 +358,20 @@ footer div a:hover {
   -webkit-user-select: none;
      -moz-user-select: none;
           user-select: none;
+  background-color: rgba(255, 255, 255, 0.7);
+  color: black;
+  opacity: 0.5;
 }
 .modal-content .carousel .prev:hover,
 .modal-content .carousel .next:hover {
-  background-color: rgba(0, 0, 0, 0.8);
+  opacity: 1;
+  background-color: rgba(255, 255, 255, 0.9);
 }
 .modal-content .carousel .prev {
-  left: 0;
-  border-radius: 3px 0 0 3px;
+  left: -40px;
 }
 .modal-content .carousel .next {
-  right: 0;
+  right: -40px;
 }
 
 .overlay {

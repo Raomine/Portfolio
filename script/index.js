@@ -1,3 +1,4 @@
+///////////// Navigation ////////////////
 window.addEventListener("DOMContentLoaded", function () {
   let navLinks = document.querySelectorAll("nav a");
 
@@ -17,6 +18,40 @@ window.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+//////////////// SkillBars ////////////////
+function animateSkills() {
+  const skillBars = document.querySelectorAll(".skill-bar");
+  skillBars.forEach(function (bar) {
+    const skillLevel = bar.querySelector(".skill-level");
+    const rect = bar.getBoundingClientRect();
+
+    if (rect.top < window.innerHeight && rect.bottom >= 0) {
+      if (!skillLevel.classList.contains("loaded")) {
+        skillLevel.style.width = skillLevel.getAttribute("data-width");
+        skillLevel.classList.add("loaded");
+      }
+    } else {
+      skillLevel.classList.remove("loaded");
+    }
+  });
+}
+
+function isElementInViewport(el) {
+  const rect = el.getBoundingClientRect();
+  return (
+    rect.top >= 0 &&
+    rect.left >= 0 &&
+    rect.bottom <=
+      (window.innerHeight || document.documentElement.clientHeight) &&
+    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
+  );
+}
+
+document.addEventListener("DOMContentLoaded", animateSkills);
+
+document.addEventListener("scroll", animateSkills);
+
+////////////////// Modals /////////////////
 let currentSlideIndex = 0;
 let currentProject = null;
 
@@ -27,8 +62,8 @@ let projects = {
     1. Création de la section "Les membres fondateurs" 
     2. Évolution de la section de bas de page avec le bouton de téléchargement`,
     images: [
-      "../assets/P2-membres-fondateurs.jpg",
-      "../assets/P2-bas-de-page.jpg",
+      "../assets/modals/P2-membres-fondateurs.jpg",
+      "../assets/modals/P2-bas-de-page.jpg",
     ],
   },
 
@@ -37,13 +72,13 @@ let projects = {
     description:
       "Ce projet consistait à créer la page d'accueil d'une agence de voyage en utilisant HTML et CSS. À travers différentes étapes, j'ai mis en place l'environnement de développement, découpé la maquette, intégré les différents éléments tels que le header, le formulaire de recherche, les filtres, les cartes d'hébergement et d'activités, ainsi que le footer. J'ai également assuré la compatibilité du site avec les différents écrans grâce au responsive design. En respectant les bonnes pratiques et en vérifiant la qualité du code.",
     images: [
-      "../assets/P3-header.jpg",
-      "../assets/P3-form.jpg",
-      "../assets/P3-filters.jpg",
-      "../assets/P3-hebergements.jpg",
-      "../assets/P3-activites.jpg",
-      "../assets/P3-footer.jpg",
-      "../assets/P3-Booki.jpg",
+      "../assets/modals/P3-header.jpg",
+      "../assets/modals/P3-form.jpg",
+      "../assets/modals/P3-filters.jpg",
+      "../assets/modals/P3-hebergements.jpg",
+      "../assets/modals/P3-activites.jpg",
+      "../assets/modals/P3-footer.jpg",
+      "../assets/modals/P3-Booki.jpg",
     ],
   },
 
@@ -52,11 +87,11 @@ let projects = {
     description:
       "Au cours de ce projet, j'ai établi un environnement de développement solide, intégré la version mobile de la page d'accueil du site avec des animations CSS harmonieuses, assuré sa réactivité pour différents appareils, et reproduit ce processus pour les pages des restaurants. J'ai maintenu une structure claire et optimisé l'efficacité du code en utilisant Sass et en évitant les duplications inutiles. Enfin, j'ai effectué une revue minutieuse pour garantir la conformité aux maquettes et la qualité du rendu final.",
     images: [
-      "../assets/P4-homepage.jpg",
-      "../assets/P4-resto1.jpg",
-      "../assets/P4-resto2.jpg",
-      "../assets/P4-resto3.jpg",
-      "../assets/P4-resto4.jpg",
+      "../assets/modals/P4-homepage.jpg",
+      "../assets/modals/P4-resto1.jpg",
+      "../assets/modals/P4-resto2.jpg",
+      "../assets/modals/P4-resto3.jpg",
+      "../assets/modals/P4-resto4.jpg",
     ],
   },
 
@@ -69,10 +104,10 @@ let projects = {
     Étape 4 : Modification du slide au clic sur le bouton
     Étape 5 : Mise en place du défilement infini sur le carrousel`,
     images: [
-      "../assets/P5-carousel1.jpg",
-      "../assets/P5-carousel2.jpg",
-      "../assets/P5-carousel3.jpg",
-      "../assets/P5-carousel4.jpg",
+      "../assets/modals/P5-carousel1.jpg",
+      "../assets/modals/P5-carousel2.jpg",
+      "../assets/modals/P5-carousel3.jpg",
+      "../assets/modals/P5-carousel4.jpg",
     ],
   },
 
@@ -80,10 +115,10 @@ let projects = {
     title: "Créez une page web dynamique avec JavaScript",
     description: `Le projet consiste à créer une page web dynamique en utilisant JavaScript, en mettant en pratique les connaissances acquises sur ce langage. L'objectif était de réaliser plusieurs fonctionnalités (galerie d'images, page de connexion, modales) et de travailler avec des données dynamiques provenant d'une API.`,
     images: [
-      "../assets/P6-gallerie.jpg",
-      "../assets/P6-login.jpg",
-      "../assets/P6-modale1.jpg",
-      "../assets/P6-modale2.jpg",
+      "../assets/modals/P6-gallerie.jpg",
+      "../assets/modals/P6-login.jpg",
+      "../assets/modals/P6-modale1.jpg",
+      "../assets/modals/P6-modale2.jpg",
     ],
   },
 
@@ -95,10 +130,10 @@ let projects = {
     Découpage des tâches : J'ai découpé le projet en différentes tâches, en me concentrant d'abord sur les user stories prioritaires.
     Préparation de la présentation finale : Enfin, j'ai préparé les supports de présentation pour le client, en agrégeant les différents livrables dans une présentation PowerPoint`,
     images: [
-      "../assets/P7-wakelet.jpg",
-      "../assets/P7-solutions-tech.jpg",
-      "../assets/P7-trello.jpg",
-      "../assets/P7-powerpoint.jpg",
+      "../assets/modals/P7-wakelet.jpg",
+      "../assets/modals/P7-solutions-tech.jpg",
+      "../assets/modals/P7-trello.jpg",
+      "../assets/modals/P7-powerpoint.jpg",
     ],
   },
 
@@ -107,10 +142,10 @@ let projects = {
     description:
       "Le projet consiste à créer une application web de location immobilière avec React. Les étapes clés incluent l'initialisation du projet avec Create React App, l'ajout de React Router pour le routage, la création des pages principales (accueil, À propos, page d'erreur), le développement de fonctionnalités spécifiques comme le carrousel pour les propriétés, la gestion des erreurs d'ID, et enfin la vérification globale du site. À chaque étape, la mise en page est optimisée avec Sass et les composants sont réutilisés autant que possible.",
     images: [
-      "../assets/P8-homepage.jpg",
-      "../assets/P8-about.jpg",
-      "../assets/P8-error.jpg",
-      "../assets/P8-logement.jpg",
+      "../assets/modals/P8-homepage.jpg",
+      "../assets/modals/P8-about.jpg",
+      "../assets/modals/P8-error.jpg",
+      "../assets/modals/P8-logement.jpg",
     ],
   },
 
@@ -119,12 +154,12 @@ let projects = {
     description:
       " J'ai, avec Lighthouse, analysé le code source, identifié les améliorations nécessaires, optimisé les performances, le SEO technique, intégré le référencement local et les réseaux sociaux, corrigé l'accessibilité, et généré des rapports finaux. Ce processus structuré a permis d'améliorer les performances et d'optimiser le référencement du site.",
     images: [
-      "../assets/P9-site1.jpg",
-      "../assets/P9-site2.jpg",
-      "../assets/P9-site3.jpg",
-      "../assets/P9-site4.jpg",
-      "../assets/P9-site5.jpg",
-      "../assets/P9-lighthouse.jpg",
+      "../assets/modals/P9-site1.jpg",
+      "../assets/modals/P9-site2.jpg",
+      "../assets/modals/P9-site3.jpg",
+      "../assets/modals/P9-site4.jpg",
+      "../assets/modals/P9-site5.jpg",
+      "../assets/modals/P9-lighthouse.jpg",
     ],
   },
 
@@ -133,12 +168,12 @@ let projects = {
     description:
       "Dans ce projet de débogage pour une agence événementielle, j'ai suivi un processus méthodique en quatre étapes clés : mise en place de l'environnement de développement, identification et réparation des bugs, rédaction d'un cahier de recette, et ajout de tests supplémentaires.",
     images: [
-      "../assets/P10-site1.jpg",
-      "../assets/P10-site2.jpg",
-      "../assets/P10-site3.jpg",
-      "../assets/P10-site4.jpg",
-      "../assets/P10-site5.jpg",
-      "../assets/P10-cahier-de-recette.jpg",
+      "../assets/modals/P10-site1.jpg",
+      "../assets/modals/P10-site2.jpg",
+      "../assets/modals/P10-site3.jpg",
+      "../assets/modals/P10-site4.jpg",
+      "../assets/modals/P10-site5.jpg",
+      "../assets/modals/P10-cahier-de-recette.jpg",
     ],
   },
 
@@ -147,9 +182,9 @@ let projects = {
     description:
       "Ce projet a consisté à développer une application bancaire avec React, Redux et une API. Le frontend est concis et réutilisable. J'ai mis en place l'authentification des utilisateurs, développé la fonctionnalité de modification du nom d'utilisateur. J'ai également ajouté des éléments à la documentation Swagger.",
     images: [
-      "../assets/P11-homepage.jpg",
-      "../assets/P11-signin.jpg",
-      "../assets/P11-user.jpg",
+      "../assets/modals/P11-homepage.jpg",
+      "../assets/modals/P11-signin.jpg",
+      "../assets/modals/P11-user.jpg",
     ],
   },
 };
@@ -208,35 +243,3 @@ window.onclick = function (event) {
     document.body.style.overflow = "";
   }
 };
-
-function animateSkills() {
-  const skillBars = document.querySelectorAll(".skill-bar");
-  skillBars.forEach(function (bar) {
-    const skillLevel = bar.querySelector(".skill-level");
-    const rect = bar.getBoundingClientRect();
-
-    if (rect.top < window.innerHeight && rect.bottom >= 0) {
-      if (!skillLevel.classList.contains("loaded")) {
-        skillLevel.style.width = skillLevel.getAttribute("data-width");
-        skillLevel.classList.add("loaded");
-      }
-    } else {
-      skillLevel.classList.remove("loaded");
-    }
-  });
-}
-
-function isElementInViewport(el) {
-  const rect = el.getBoundingClientRect();
-  return (
-    rect.top >= 0 &&
-    rect.left >= 0 &&
-    rect.bottom <=
-      (window.innerHeight || document.documentElement.clientHeight) &&
-    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-  );
-}
-
-document.addEventListener("DOMContentLoaded", animateSkills);
-
-document.addEventListener("scroll", animateSkills);

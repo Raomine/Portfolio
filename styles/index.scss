@@ -238,7 +238,6 @@ section {
 
     to {
         width: var(--skill-level);
-        /* Se termine avec la largeur spécifiée */
     }
 }
 
@@ -399,6 +398,8 @@ footer {
     padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    overflow-y: auto;
+    max-height: 80%;
 
     &-content {
         max-width: 600px;
@@ -406,8 +407,8 @@ footer {
 
         .carousel {
             position: relative;
-            max-width: 100%;
-            margin-top: 20px;
+            max-width: calc(100% - 40px);
+            margin: 20px auto;
 
             img {
                 width: 100%;
@@ -427,19 +428,22 @@ footer {
                 transition: 0.6s ease;
                 border-radius: 0 3px 3px 0;
                 user-select: none;
+                background-color: rgba(255, 255, 255, 0.7);
+                color: black;
+                opacity: 0.5;
 
                 &:hover {
-                    background-color: rgba(0, 0, 0, 0.8);
+                    opacity: 1;
+                    background-color: rgba(255, 255, 255, 0.9);
                 }
             }
 
             .prev {
-                left: 0;
-                border-radius: 3px 0 0 3px;
+                left: -40px;
             }
 
             .next {
-                right: 0;
+                right: -40px;
             }
         }
     }
