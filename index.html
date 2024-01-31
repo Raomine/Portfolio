@@ -9,17 +9,13 @@
 
     <link rel="stylesheet" href="/styles/index.css">
     <script src="/script/index.js" defer></script>
-    <script src="/script/nav.js" defer></script>
 </head>
 
 <body>
 
     <header>
-        <div class="logo-container">
-            <div class="logo">
-                <h1>Hicham |</h1>
-                <p>Étudiant en développement web</p>
-            </div>
+        <div class="logo">
+            <h1>Hicham</h1>
         </div>
         <nav>
             <a href="#about">À propos</a>
@@ -27,14 +23,16 @@
             <a href="#projects">Projets</a>
             <a href="#contact">Contact</a>
         </nav>
+        <button class="toggle-nav">Menu</button>
     </header>
 
     <section id="about">
         <h2>À propos de moi</h2>
         <div class="profile">
-            <img src="assets/projects/sophie_bluel.jpg" alt="Ma photo de profil">
+            <img src="assets/WIN_20240120_16_33_20_Pro.jpg" alt="Ma photo de profil">
             <p>
-                Passionné par le monde du développement web, je suis un étudiant cherchant à explorer et maîtriser les
+                Passionné par le monde du développement web, je suis un étudiant cherchant à explorer et maîtriser
+                les
                 technologies qui façonnent le paysage numérique. Mon parcours d'apprentissage couvre différentes
                 compétences,
                 allant de la création d'interfaces utilisateur interactives avec HTML, CSS, JavaScript, React, à la
@@ -187,7 +185,7 @@
         <h2>Contact</h2>
         <p>Contactez-moi pour discuter de projets, opportunités, etc.</p>
 
-        <form action="" method="">
+        <form id="contact-form" action="" method="">
             <label for="name">Nom :</label>
             <input type="text" id="name" name="name" required>
 
@@ -211,6 +209,7 @@
         </div>
     </footer>
 
+
     <div id="overlay" class="overlay">
     </div>
     <div class="modal hidden" id="projectModal">
@@ -220,8 +219,8 @@
 
             <div class="carousel">
                 <img id="modalImage" alt="Image du projet">
-                <button class="prev" onclick="prevSlide()">&#10094;</button>
-                <button class="next" onclick="nextSlide()">&#10095;</button>
+                <button class="prev" onclick="prevSlide()"><span>&#10094;</span></button>
+                <button class="next" onclick="nextSlide()"><span>&#10095;</span></button>
             </div>
 
             <p id="modalDescription"></p>

@@ -18,6 +18,15 @@ window.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+  var toggleNavBtn = document.querySelector(".toggle-nav");
+  var nav = document.querySelector("nav");
+
+  toggleNavBtn.addEventListener("click", function () {
+    nav.classList.toggle("active");
+  });
+});
+
 //////////////// SkillBars ////////////////
 function animateSkills() {
   const skillBars = document.querySelectorAll(".skill-bar");
