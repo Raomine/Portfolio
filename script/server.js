@@ -12,7 +12,7 @@ app.post("/submit", (req, res) => {
   // Logique de traitement des données du formulaire (par exemple, envoyer un email)
   // Exemple d'utilisation de nodemailer pour envoyer un email
   const transporter = nodemailer.createTransport({
-    service: "gmail",
+    service: "tempmail",
     auth: {
       user: "klvr30e9dk@waterisgone.com",
       pass: "",
