@@ -7,63 +7,128 @@
 
     <title>Hicham | Portfolio</title>
 
-    <link rel="stylesheet" href="/styles/index.css">
+    <link rel="stylesheet" href="/styles/index.css" />
     <script src="/script/index.js" defer></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Ysabeau+Office:ital,wght@0,1..1000;1,1..1000&display=swap"
+        rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
 
+
+    <div id="animatedText" class="animated-text"><span>Hicham</span></div>
     <header>
+
+        <button id="themeButton" class="ball">Changer de thème</button>
+        <h3>Étudiant en développement web</h3>
+
         <div class="logo">
             <h1>Hicham</h1>
         </div>
+        <button class="toggle-nav">Menu</button>
+
         <nav>
             <a href="#about">À propos</a>
             <a href="#skills">Compétences</a>
             <a href="#projects">Projets</a>
             <a href="#contact">Contact</a>
         </nav>
-        <button class="toggle-nav">Menu</button>
+
     </header>
 
-    <section id="about">
+    <section id="about" class="hide">
+        <div class="header">
+            <div class="logo" id="logo">
+                <h1>Hicham</h1>
+            </div>
+
+            <nav>
+                <a href="#skills">Compétences</a>
+                <a href="#projects">Projets</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
         <h2>À propos de moi</h2>
+
         <div class="profile">
-            <img src="assets/WIN_20240120_16_33_20_Pro.jpg" alt="Ma photo de profil">
+            <img src="assets/WIN_20240120_16_33_20_Pro.jpg" alt="Ma photo de profil" />
+
             <p>
-                Passionné par le monde du développement web, je suis un étudiant cherchant à explorer et maîtriser
-                les
-                technologies qui façonnent le paysage numérique. Mon parcours d'apprentissage couvre différentes
-                compétences,
-                allant de la création d'interfaces utilisateur interactives avec HTML, CSS, JavaScript, React, à la
-                conception de solutions côté serveur avec des frameworks comme Node.js.
+                Passionné par le développement web, je suis constamment à la recherche de moyens d'explorer et de
+                maîtriser les technologies qui façonnent notre paysage numérique. Mon parcours couvre une large gamme de
+                compétences, de la création d'interfaces utilisateur interactives à la conception de solutions côté
+                serveur.
+                <br><br>
+                Avec une base solide en HTML, CSS et JavaScript, j'ai développé des interfaces intuitives et
+                attrayantes. J'ai également exploré des bibliothèques et des frameworks modernes tels que React.js pour
+                créer des applications web dynamiques et réactives.
+                <br><br>
+                L'interaction avec les utilisateurs et la création d'expériences utilisateur fluides me fascinent. C'est
+                pourquoi je m'efforce continuellement d'approfondir mes connaissances dans ce domaine. Parallèlement,
+                j'ai exploré le développement côté serveur en utilisant des technologies telles que Node.js.
+                <br><br>
+                À l'avenir, je prévois de continuer à explorer de nouvelles technologies et à approfondir mes
+                compétences en développement full-stack, sécurité des applications web et architectures cloud. Je crois
+                fermement que le développement web est un domaine en constante évolution, et je suis prêt à relever les
+                défis et à saisir les opportunités qu'il offre pour continuer à grandir en tant que développeur
+                compétent et polyvalent.
             </p>
         </div>
     </section>
 
-    <section id="skills">
+    <section id="skills" class="hide">
+        <div class="header">
+            <div class="logo" id="logo">
+                <h1>Hicham</h1>
+            </div>
+
+            <nav>
+                <a href="#about">À propos</a>
+                <a href="#projects">Projets</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
         <h2>Compétences</h2>
+
         <div class="skills">
             <div class="front-end">
                 <h3>Front-end :</h3>
+
                 <ul>
-                    <li>HTML5 <div class="skill-bar">
-                            <div class="skill-level" style="--skill-level: 90%;"></div>
+                    <li>
+                        HTML5
+                        <div class="skill-bar" onmouseenter="startAnimation(this)" onmouseleave="stopAnimation(this)">
+                            <div class="skill-level infinite" style="--skill-level: 90%"></div>
                         </div>
                         <span class="skill-percent">90%</span>
                     </li>
-                    <li>CSS3 / Sass <div class="skill-bar">
-                            <div class="skill-level" style="--skill-level: 90%;"></div>
+
+                    <li>
+                        CSS3 / Sass
+                        <div class="skill-bar" onmouseenter="startAnimation(this)" onmouseleave="stopAnimation(this)">
+                            <div class="skill-level infinite" style="--skill-level: 90%"></div>
                         </div>
                         <span class="skill-percent">90%</span>
                     </li>
-                    <li>JavaScript (ES6+) <div class="skill-bar">
-                            <div class="skill-level" style="--skill-level: 80%;"></div>
+                    <li>
+                        JavaScript (ES6+)
+                        <div class="skill-bar" onmouseenter="startAnimation(this)" onmouseleave="stopAnimation(this)">
+                            <div class="skill-level infinite" style="--skill-level: 80%"></div>
                         </div>
                         <span class="skill-percent">80%</span>
                     </li>
-                    <li>React.js <div class="skill-bar">
-                            <div class="skill-level" style="--skill-level: 75%;"></div>
+                    <li>
+                        React.js
+                        <div class="skill-bar" onmouseenter="startAnimation(this)" onmouseleave="stopAnimation(this)">
+                            <div class="skill-level infinite" style="--skill-level: 75%"></div>
                         </div>
                         <span class="skill-percent">75%</span>
                     </li>
@@ -72,23 +137,31 @@
             <div class="back-end">
                 <h3>Back-end :</h3>
                 <ul>
-                    <li>Node.js <div class="skill-bar">
-                            <div class="skill-level" style="--skill-level: 55%;"></div>
+                    <li>
+                        Node.js
+                        <div class="skill-bar" onmouseenter="startAnimation(this)" onmouseleave="stopAnimation(this)">
+                            <div class="skill-level infinite" style="--skill-level: 55%"></div>
                         </div>
                         <span class="skill-percent">55%</span>
                     </li>
-                    <li>Express.js <div class="skill-bar">
-                            <div class="skill-level" style="--skill-level: 55%;"></div>
+                    <li>
+                        Express.js
+                        <div class="skill-bar" onmouseenter="startAnimation(this)" onmouseleave="stopAnimation(this)">
+                            <div class="skill-level infinite" style="--skill-level: 55%"></div>
                         </div>
                         <span class="skill-percent">55%</span>
                     </li>
-                    <li>RESTful API <div class="skill-bar">
-                            <div class="skill-level" style="--skill-level: 80%;"></div>
+                    <li>
+                        RESTful API
+                        <div class="skill-bar" onmouseenter="startAnimation(this)" onmouseleave="stopAnimation(this)">
+                            <div class="skill-level infinite" style="--skill-level: 80%"></div>
                         </div>
                         <span class="skill-percent">80%</span>
                     </li>
-                    <li>MongoDB <div class="skill-bar">
-                            <div class="skill-level" style="--skill-level: 65%;"></div>
+                    <li>
+                        MongoDB
+                        <div class="skill-bar" onmouseenter="startAnimation(this)" onmouseleave="stopAnimation(this)">
+                            <div class="skill-level infinite" style="--skill-level: 65%"></div>
                         </div>
                         <span class="skill-percent">65%</span>
                     </li>
@@ -97,136 +170,134 @@
         </div>
     </section>
 
-    <section id="projects">
+    <section id="projects" class="hide">
+        <div class="header">
+            <div class="logo" id="logo">
+                <h1>Hicham</h1>
+            </div>
+
+            <nav>
+                <a href="#about">À propos</a>
+                <a href="#skills">Compétences</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
         <h2>Projets</h2>
 
-        <div class="project">
-            <img src="/assets/projects/riding-cities.jpg" alt="Projet 2, riding cities">
-            <h3>Premiers pas sur le langage HTML</h3>
-            <button onclick="openModal('project2')">Voir
-                Plus</button>
-            <a href="#" class="non-cliquable">GitHub</a>
-        </div>
+        <div class="projects">
+            <div class="project">
+                <img src="/assets/projects/riding-cities.jpg" alt="Projet 2, riding cities"
+                    onclick="openModal('project2')" />
+            </div>
 
-        <div class="project">
-            <img src="/assets/projects/booki.jpg" alt="Projet 3, booki">
-            <h3>Créez la page d'accueil d'une agence de voyage avec HTML & CSS</h3>
-            <button onclick="openModal('project3')">Voir
-                Plus</button>
-            <a href="#" class="non-cliquable">GitHub</a>
-        </div>
+            <div class="project">
+                <img src="/assets/projects/booki.jpg" alt="Projet 3, booki" onclick="openModal('project3')" />
+            </div>
 
-        <div class="project">
-            <img src="/assets/projects/ohmyfood.jpg" alt="Projet 4, ohmyfood">
-            <h3>Améliorez l'interface d'un site mobile avec des animations CSS</h3>
-            <button onclick="openModal('project4')">Voir
-                Plus</button>
-            <a href="https://github.com/Raomine/Projet_4" target="_blank">GitHub</a>
-        </div>
+            <div class="project">
+                <img src="/assets/projects/ohmyfood.jpg" alt="Projet 4, ohmyfood" onclick="openModal('project4')" />
+            </div>
 
-        <div class="project">
-            <img src="/assets/projects/print-it.jpg" alt="Projet 5, print-it">
-            <h3>Premiers pas sur le langage JavaScript</h3>
-            <button onclick="openModal('project5')">Voir
-                Plus</button>
-            <a href="https://github.com/Raomine/Projet_5" target="_blank">GitHub</a>
-        </div>
+            <div class="project">
+                <img src="/assets/projects/print-it.jpg" alt="Projet 5, print-it" onclick="openModal('project5')" />
+            </div>
+            <div class="project">
+                <img src="/assets/projects/sophie_bluel.jpg" alt="Projet 6, Sophie Bluel"
+                    onclick="openModal('project6')" />
+            </div>
 
-        <div class="project">
-            <img src="/assets/projects/sophie_bluel.jpg" alt="Projet 6, Sophie Bluel">
-            <h3>Créez une page web dynamique avec JavaScript</h3>
-            <button onclick="openModal('project6')">Voir
-                Plus</button>
-            <a href="https://github.com/Raomine/Projet_6" target="_blank">GitHub</a>
-        </div>
+            <div class="project">
+                <img src="/assets/projects/qwenta.jpg" alt="Projet 7, Menu Maker" onclick="openModal('project7')" />
+            </div>
 
-        <div class="project">
-            <img src="/assets/projects/qwenta.jpg" alt="Projet 7, Menu Maker">
-            <h3>Planifiez le développement du site de votre client</h3>
-            <button onclick="openModal('project7')">Voir
-                Plus</button>
-            <a href="#" class="non-cliquable">GitHub</a>
-        </div>
+            <div class="project">
+                <img src="/assets/projects/kasa.jpg" alt="Projet 8, Kasa" onclick="openModal('project8')" />
+            </div>
 
-        <div class="project">
-            <img src="/assets/projects/kasa.jpg" alt="Projet 8, Kasa">
-            <h3>Créez une application web de location immobilière avec React</h3>
-            <button onclick="openModal('project8')">Voir
-                Plus</button>
-            <a href="https://github.com/Raomine/Projet_8" target="_blank">GitHub</a>
-        </div>
+            <div class="project">
+                <img src="/assets/projects/nina_carducci.jpg" alt="Projet 9, Nina Carducci"
+                    onclick="openModal('project9')" />
+            </div>
 
-        <div class="project">
-            <img src="/assets/projects/nina_carducci.jpg" alt="Projet 9, Nina Carducci">
-            <h3>Optimisez le référencement d'un site de photographe</h3>
-            <button onclick="openModal('project9')">Voir
-                Plus</button>
-            <a href="https://github.com/Raomine/Projet_9" target="_blank">GitHub</a>
-        </div>
+            <div class="project">
+                <img src="/assets/projects/77events.jpg" alt="Projet 10, 77events" onclick="openModal('project10')" />
+            </div>
 
-        <div class="project">
-            <img src="/assets/projects/77events.jpg" alt="Projet 10, 77events">
-            <h3>Débuggez le site d'une agence d'événementielt</h3>
-            <button onclick="openModal('project10')">Voir
-                Plus</button>
-            <a href="https://github.com/Raomine/Projet_10" target="_blank">GitHub</a>
-        </div>
-
-        <div class="project">
-            <img src="/assets/projects/argentbank.jpg" alt="Projet 11, Argent Bank">
-            <h3>Implémentez le front-end d'une application bancaire avec React</h3>
-            <button onclick="openModal('project11')">Voir
-                Plus</button>
-            <a href="https://github.com/Raomine/Projet_11" target="_blank">GitHub</a>
+            <div class="project">
+                <img src="/assets/projects/argentbank.jpg" alt="Projet 11, Argent Bank"
+                    onclick="openModal('project11')" />
+            </div>
         </div>
     </section>
 
-    <section id="contact">
+    <section id="contact" class="hide">
+        <div class="header">
+            <div class="logo" id="logo">
+                <h1>Hicham</h1>
+            </div>
+
+            <nav>
+                <a href="#about">À propos</a>
+                <a href="#skills">Compétences</a>
+                <a href="#projects">Projets</a>
+            </nav>
+        </div>
+
         <h2>Contact</h2>
         <p>Contactez-moi pour discuter de projets, opportunités, etc.</p>
+        <div class="form-container">
+            <form id="contact-form" action="" method="">
+                <label for="name">Nom :</label>
+                <input type="text" id="name" name="name" required />
 
-        <form id="contact-form" action="" method="">
-            <label for="name">Nom :</label>
-            <input type="text" id="name" name="name" required>
+                <label for="email">Email :</label>
+                <input type="email" id="email" name="email" required />
 
-            <label for="email">Email :</label>
-            <input type="email" id="email" name="email" required>
+                <label for="message">Message :</label>
+                <textarea id="message" name="message" rows="4" required></textarea>
 
-            <label for="message">Message :</label>
-            <textarea id="message" name="message" rows="4" required></textarea>
-
-            <button type="submit">Envoyer</button>
-        </form>
+                <button type="submit">Envoyer</button>
+            </form>
+            <img src="/assets/pexels-johannes-plenio-1456304.jpg" alt="Jour / Nuit">
+        </div>
     </section>
 
     <footer>
-        <p>&copy; 2024 Tous droits réservés.</p>
+
+        <div class="logo">
+            <h1>Hicham</h1>
+        </div>
+        <p class="all-right">&copy; 2024 Tous droits réservés.</p>
         <div itemscope itemtype="https://schema.org/Person">
             <span itemprop="familyName">Zarour</span>
             <span itemprop="givenName">Hicham</span>
-            <p>Adresse e-mail : <span itemprop="email"><a
-                        href="mailto:zarour.hicham@gmail.com">zarour.hicham@gmail.com</a></span></p>
+            <p>
+                Adresse e-mail :
+                <span itemprop="email"><a href="mailto:zarour.hicham@gmail.com">zarour.hicham@gmail.com</a></span>
+            </p>
         </div>
     </footer>
 
-
-    <div id="overlay" class="overlay">
-    </div>
+    <div id="overlay" class="overlay"></div>
     <div class="modal hidden" id="projectModal">
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
             <h2 id="modalTitle"></h2>
 
             <div class="carousel">
-                <img id="modalImage" alt="Image du projet">
-                <button class="prev" onclick="prevSlide()"><span>&#10094;</span></button>
-                <button class="next" onclick="nextSlide()"><span>&#10095;</span></button>
+                <img id="modalImage" alt="Image du projet" />
+                <button class="prev" onclick="prevSlide()">
+                    <span>&#10094;</span>
+                </button>
+                <button class="next" onclick="nextSlide()">
+                    <span>&#10095;</span>
+                </button>
             </div>
 
             <p id="modalDescription"></p>
+            <a href="" target="_blank">Lien Github</a>
         </div>
     </div>
-
 </body>
 
 </html>

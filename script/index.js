@@ -1,64 +1,150 @@
-///////////// Navigation ////////////////
-window.addEventListener("DOMContentLoaded", function () {
-  let navLinks = document.querySelectorAll("nav a");
+// script thème
+const themeButton = document.getElementById("themeButton");
+const header = document.querySelector("header");
+const logo = document.querySelector(".logo");
+const links = document.querySelectorAll("nav a");
+const animated = document.querySelector(".animated-text");
+const animatedSpan = document.querySelector(".animated-text span");
+const headers = document.querySelectorAll(".header");
+const footer = document.querySelector("footer");
+const sectionsColor = document.querySelectorAll("section");
+const text = document.querySelectorAll("body, a");
+const pColor = document.querySelector(".profile p");
 
-  navLinks.forEach(function (link) {
-    link.addEventListener("click", function (event) {
-      event.preventDefault();
+themeButton.addEventListener("click", function () {
+  header.classList.toggle("light");
+  logo.classList.toggle("light2");
+  animated.classList.toggle("light4");
+  animatedSpan.classList.toggle("light5");
+  headers.forEach((header) => {
+    header.classList.toggle("light6");
+  });
+  footer.classList.toggle("light6");
+  sectionsColor.forEach((section) => {
+    section.classList.toggle("light7");
+  });
+  text.forEach((text) => {
+    text.classList.toggle("light8");
+  });
+  pColor.classList.toggle("light9");
+});
 
-      let targetId = this.getAttribute("href").substring(1);
-      let targetSection = document.getElementById(targetId);
-      let headerHeight = document.querySelector("header").offsetHeight;
+// Script pour déplacer le bouton au clic
 
-      window.scrollTo({
-        top: targetSection.offsetTop - headerHeight,
-        behavior: "smooth",
+themeButton.addEventListener("click", function () {
+  themeButton.classList.toggle("move-right");
+});
+
+// Déplacement entre section
+document.addEventListener("DOMContentLoaded", function () {
+  const navLinks = document.querySelectorAll("nav a");
+  const header = document.querySelector("header");
+
+  navLinks.forEach(function (navLink) {
+    navLink.addEventListener("click", function () {
+      // Masquer le header
+      header.classList.add("hide");
+
+      // Récupérer l'ID de la section cible
+      const targetId = navLink.getAttribute("href").substring(1);
+
+      // Masquer la section actuelle
+      const currentSection = document.querySelector("section:not(.hide)");
+      if (currentSection) {
+        currentSection.classList.add("hide");
+      }
+
+      // Afficher la section cible
+      document.getElementById(targetId).classList.remove("hide");
+    });
+  });
+
+  // Gestion des logos de section
+  const sectionLogos = document.querySelectorAll(".logo");
+  sectionLogos.forEach(function (logo) {
+    logo.addEventListener("click", function () {
+      // Retirer la classe qui masque le header
+      header.classList.remove("hide");
+
+      // Masquer la section actuelle
+      const currentSection = document.querySelector("section:not(.hide)");
+      if (currentSection) {
+        currentSection.classList.add("hide");
+      }
+    });
+  });
+});
+
+// Animation Hicham
+document.addEventListener("DOMContentLoaded", function () {
+  var links = document.querySelectorAll("header nav a");
+  var animatedText = document.getElementById("animatedText");
+
+  links.forEach(function (link) {
+    link.addEventListener("click", function () {
+      var textToAnimate = animatedText.firstChild;
+      animatedText.style.display = "block";
+      textToAnimate.classList.add("animate");
+
+      textToAnimate.addEventListener("animationend", function () {
+        textToAnimate.classList.remove("animate");
+
+        animatedText.style.display = "none";
+        textToAnimate.removeEventListener("animationend", this);
       });
     });
   });
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-  var toggleNavBtn = document.querySelector(".toggle-nav");
-  var nav = document.querySelector("nav");
+// Menu Nav
+const toggleNavButton = document.querySelector(".toggle-nav");
 
-  toggleNavBtn.addEventListener("click", function () {
-    nav.classList.toggle("active");
+const navMenu = document.querySelector("nav");
+
+toggleNavButton.addEventListener("click", function () {
+  navMenu.classList.toggle("active");
+});
+
+// Fonction pour animer les titres
+function animateTitle(title) {
+  title.style.fontSize = "13vw";
+
+  setTimeout(() => {
+    title.style.fontSize = "0em";
+  }, 2200);
+}
+
+// Créer un observateur d'intersection
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    // Vérifier si la section est dans le viewport
+    if (entry.isIntersecting) {
+      // Récupérer le titre de la section
+      const title = entry.target.querySelector("h2");
+
+      animateTitle(title);
+    }
   });
 });
 
-//////////////// SkillBars ////////////////
-function animateSkills() {
-  const skillBars = document.querySelectorAll(".skill-bar");
-  skillBars.forEach(function (bar) {
-    const skillLevel = bar.querySelector(".skill-level");
-    const rect = bar.getBoundingClientRect();
+const sectionsToObserve = document.querySelectorAll("section");
 
-    if (rect.top < window.innerHeight && rect.bottom >= 0) {
-      if (!skillLevel.classList.contains("loaded")) {
-        skillLevel.style.width = skillLevel.getAttribute("data-width");
-        skillLevel.classList.add("loaded");
-      }
-    } else {
-      skillLevel.classList.remove("loaded");
-    }
-  });
+// Attacher l'observateur d'intersection à chaque élément à observer
+sectionsToObserve.forEach((section) => {
+  observer.observe(section);
+});
+
+//////////// Skillbars ////////////////
+function startAnimation(element) {
+  let skillLevel = element.querySelector(".skill-level");
+  skillLevel.style.width = "var(--skill-level)";
+  skillLevel.classList.remove("infinite");
 }
 
-function isElementInViewport(el) {
-  const rect = el.getBoundingClientRect();
-  return (
-    rect.top >= 0 &&
-    rect.left >= 0 &&
-    rect.bottom <=
-      (window.innerHeight || document.documentElement.clientHeight) &&
-    rect.right <= (window.innerWidth || document.documentElement.clientWidth)
-  );
+function stopAnimation(element) {
+  let skillLevel = element.querySelector(".skill-level");
+  skillLevel.style.width = "var(--skill-level)";
 }
-
-document.addEventListener("DOMContentLoaded", animateSkills);
-
-document.addEventListener("scroll", animateSkills);
 
 ////////////////// Modals /////////////////
 let currentSlideIndex = 0;
@@ -102,6 +188,7 @@ let projects = {
       "../assets/modals/P4-resto3.jpg",
       "../assets/modals/P4-resto4.jpg",
     ],
+    link: "https://github.com/Raomine/Projet_4",
   },
 
   project5: {
@@ -111,13 +198,15 @@ let projects = {
     Étape 2 : Ajout d'Event Listeners sur les flèches
     Étape 3 : Ajout des bullet points au slider
     Étape 4 : Modification du slide au clic sur le bouton
-    Étape 5 : Mise en place du défilement infini sur le carrousel`,
+    Étape 5 : Mise en place du défilement infini sur le carrousel
+    Lien Github, <a href="https://github.com/Raomine/Projet_5" target="_blank">Projet 5</a>.`,
     images: [
       "../assets/modals/P5-carousel1.jpg",
       "../assets/modals/P5-carousel2.jpg",
       "../assets/modals/P5-carousel3.jpg",
       "../assets/modals/P5-carousel4.jpg",
     ],
+    link: "https://github.com/Raomine/Projet_5",
   },
 
   project6: {
@@ -129,6 +218,7 @@ let projects = {
       "../assets/modals/P6-modale1.jpg",
       "../assets/modals/P6-modale2.jpg",
     ],
+    link: "https://github.com/Raomine/Projet_6",
   },
 
   project7: {
@@ -137,7 +227,7 @@ let projects = {
     Définition des besoins techniques : J'ai identifié les besoins techniques du projet, en détaillant les plugins, les librairies et autres solutions nécessaires à sa réalisation.
     Choix et configuration de l'outil de gestion de projet : J'ai sélectionné Trello, un outil de gestion de projet adapté.
     Découpage des tâches : J'ai découpé le projet en différentes tâches, en me concentrant d'abord sur les user stories prioritaires.
-    Préparation de la présentation finale : Enfin, j'ai préparé les supports de présentation pour le client, en agrégeant les différents livrables dans une présentation PowerPoint`,
+    Préparation de la présentation finale : Enfin, j'ai préparé les supports de présentation pour le client, en agrégeant les différents livrables dans une présentation PowerPoint.`,
     images: [
       "../assets/modals/P7-wakelet.jpg",
       "../assets/modals/P7-solutions-tech.jpg",
@@ -156,6 +246,7 @@ let projects = {
       "../assets/modals/P8-error.jpg",
       "../assets/modals/P8-logement.jpg",
     ],
+    link: "https://github.com/Raomine/Projet_8",
   },
 
   project9: {
@@ -170,6 +261,7 @@ let projects = {
       "../assets/modals/P9-site5.jpg",
       "../assets/modals/P9-lighthouse.jpg",
     ],
+    link: "https://github.com/Raomine/Projet_9",
   },
 
   project10: {
@@ -184,6 +276,7 @@ let projects = {
       "../assets/modals/P10-site5.jpg",
       "../assets/modals/P10-cahier-de-recette.jpg",
     ],
+    link: "https://github.com/Raomine/Projet_10",
   },
 
   project11: {
@@ -195,6 +288,7 @@ let projects = {
       "../assets/modals/P11-signin.jpg",
       "../assets/modals/P11-user.jpg",
     ],
+    link: "https://github.com/Raomine/Projet_11",
   },
 };
 
@@ -202,6 +296,7 @@ function openModal(projectKey) {
   let project = projects[projectKey];
   document.getElementById("modalTitle").innerText = project.title;
   document.getElementById("modalDescription").innerText = project.description;
+  document.querySelector(".modal-content a").href = project.link;
 
   document.getElementById("projectModal").style.display = "block";
   document.body.style.overflow = "hidden";
