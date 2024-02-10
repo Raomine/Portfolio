@@ -296,9 +296,17 @@ function openModal(projectKey) {
   let project = projects[projectKey];
   document.getElementById("modalTitle").innerText = project.title;
   document.getElementById("modalDescription").innerText = project.description;
-  document.querySelector(".modal-content a").href = project.link;
+  const modal = document.getElementById("projectModal");
+  const projectLink = modal.querySelector("a");
 
-  document.getElementById("projectModal").style.display = "block";
+  if (project.link) {
+    projectLink.href = project.link;
+    projectLink.style.display = "block";
+  } else {
+    projectLink.style.display = "none";
+  }
+
+  modal.style.display = "block";
   document.body.style.overflow = "hidden";
   document.getElementById("overlay").style.display = "block";
 
