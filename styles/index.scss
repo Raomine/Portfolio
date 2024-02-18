@@ -1,75 +1,24 @@
-$background3: #e2c1ff;
-$darkPurple: #100024;
+/* Définition des variables de couleur */
+$textColor: rgb(190, 190, 190);
+$textColor2: white;
+$ballColor: #333;
+$ballColor2: rgb(255, 255, 106);
+$ballText: #100024;
+$ballAB: rgba(255, 255, 255, 0.1);
+$ballAB2: rgba(255, 255, 255, 0.5);
+$aNButtonHover: transparent;
+$backgroundHNFNP: #131313;
+$backgroundLight: #03579f;
+$backgroundSection: rgb(30, 41, 59);
+$backgroundSection2: #b0e5ff;
+$skillBarr: #4caf50;
+$backgroundButton: #e2c1ff;
+$backgroundModal: transparent;
+$arrow: black;
+$arrow2: rgba(255, 255, 255, 0.9);
+$overlay: rgba(0, 0, 0, 0.9);
 
-body {
-    font-family: "Lato", sans-serif;
-    overflow-x: hidden;
-    color: rgb(190, 190, 190);
-    line-height: 1.6;
-    margin: 0;
-}
-
-
-
-.hide {
-    display: none;
-}
-
-// theme clair
-
-.light {
-    background-image: url(../assets/pexels-francesco-ungaro-281260.jpg);
-    background-size: cover;
-}
-
-
-.logo.light2 {
-    background: #03579f;
-}
-
-
-.animated-text.light4 {
-    background-image: url(../assets/pexels-francesco-ungaro-281260.jpg);
-    background-size: cover;
-}
-
-.animated-text span.light5 {
-    background: #03579f;
-}
-
-.header.light6 {
-    background: #03579f;
-}
-
-.light6 {
-    background: #03579f;
-}
-
-#about.light7,
-#projects.light7,
-#skills.light7,
-#contact.light7 {
-    background: #b0e5ff;
-}
-
-.light8 {
-    color: white;
-}
-
-.header nav a.light8 {
-    color: white;
-}
-
-#about .profile p.light9 {
-    background: #03579f;
-}
-
-h2 {
-    border: 1px solid $darkPurple;
-
-    transition: font-size 2s ease;
-}
-
+/* Définition des animations */
 @keyframes enlargeAndDisappear {
     0% {
         font-size: 2em;
@@ -86,199 +35,6 @@ h2 {
     }
 }
 
-.animated-text {
-    display: none;
-    position: fixed;
-    z-index: 1001;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background-image: url(../assets/pexels-aleksandar-pasaric-1694000.jpg);
-    background-size: cover;
-    font-size: 2em;
-    padding-top: 50vh;
-    font-family: "Ysabeau Office", sans-serif;
-}
-
-.animate {
-    display: block;
-    animation: enlargeAndDisappear 2s ease forwards;
-    transform-origin: center;
-}
-
-.animated-text span {
-    background-color: $darkPurple;
-}
-
-header {
-    width: 100%;
-    height: 100vh;
-    position: absolute;
-    z-index: 1000;
-    background-image: url(../assets/pexels-aleksandar-pasaric-1694000.jpg);
-    background-size: cover;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-    overflow-x: hidden;
-
-
-    .ball {
-        width: 100px;
-        height: 100px;
-        background-color: #333;
-        color: rgb(190, 190, 190);
-        border-radius: 50%;
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        transition: transform 0.5s ease;
-    }
-
-    .ball.move-right {
-        transform: translateX(calc(100vw - 140px));
-        background: rgb(255, 255, 106);
-        color: black;
-    }
-
-    .ball::before,
-    .ball::after {
-        content: '';
-        position: absolute;
-
-        z-index: -1;
-        border-radius: 50%;
-    }
-
-    .ball::before {
-        width: 200px;
-        height: 200px;
-        top: -50px;
-        left: -50px;
-        background-color: rgba(255, 255, 255, 0.1);
-    }
-
-    .ball::after {
-        width: 300px;
-        height: 300px;
-        top: -100px;
-        left: -100px;
-        background-color: rgba(255, 255, 255, 0.1);
-    }
-
-    .ball.move-right::before {
-        background-color: rgba(255, 255, 255, 0.5);
-    }
-
-    .ball.move-right::after {
-        background-color: rgba(255, 255, 255, 0.7);
-    }
-
-    .logo {
-
-        width: 100%;
-        background: #100024;
-
-        h1 {
-            font-size: 4em;
-            font-family: "Ysabeau Office", sans-serif;
-            margin: 0;
-
-            animation: moveLeftToRight 2s cubic-bezier(.47, .2, 1, -0.35) 1s;
-        }
-    }
-
-    nav {
-
-        a {
-            color: rgb(190, 190, 190);
-            padding: 5px;
-            text-decoration: none;
-            font-size: 1.1em;
-            font-weight: 700;
-            margin-right: 20px;
-            transition: color 0.3s ease;
-
-            &:hover {
-                color: transparent;
-            }
-        }
-    }
-
-    .toggle-nav {
-        display: none;
-        background: transparent;
-        border: none;
-        color: rgb(190, 190, 190);
-        font-size: 1em;
-        font-weight: 700;
-        cursor: pointer;
-        transition: color 0.3s ease;
-    }
-
-    .toggle-nav:hover {
-        color: transparent
-    }
-
-    /* Media Queries */
-    @media only screen and (max-width: 767px) {
-
-        .ball {
-            width: 75px;
-            height: 75px;
-        }
-
-
-        h3 {
-            font-size: 1em;
-        }
-
-        .logo {
-
-            h1 {
-                font-size: 2em;
-            }
-        }
-
-        nav {
-            display: none;
-
-            a {
-                margin-right: 0;
-                text-align: center;
-
-                font-size: 1em;
-            }
-        }
-
-        nav.active {
-            display: flex;
-            flex-direction: column;
-            position: relative;
-            top: 50px;
-        }
-
-        .toggle-nav {
-            display: block;
-        }
-    }
-
-    @media only screen and (min-width: 768px) and (max-width: 1023px) {
-        height: 100vh;
-
-        .logo {
-
-            h1 {
-                font-size: 3em;
-            }
-        }
-
-    }
-}
-
 @keyframes moveLeftToRight {
     0% {
         transform: translateX(0);
@@ -291,133 +47,7 @@ header {
     }
 }
 
-section {
-    width: 100%;
-    height: 100vh;
-    box-sizing: border-box;
-
-    .header {
-        background: #131313;
-        box-shadow: 0px 13px 13px 0px rgba(0, 0, 0, 0.33);
-
-        .logo {
-
-
-            cursor: pointer;
-
-            h1 {
-                position: relative;
-                left: 20px;
-                text-align: center;
-                font-size: 1.5em;
-                font-family: "Ysabeau Office", sans-serif;
-                margin: 0;
-                padding: 20px;
-                animation: grow 1s linear infinite;
-                animation-play-state: paused;
-            }
-
-        }
-
-        .logo:hover h1 {
-            animation-play-state: running;
-        }
-
-
-        nav {
-            display: flex;
-            justify-content: space-around;
-
-            a {
-                color: rgb(190, 190, 190);
-                text-decoration: none;
-            }
-
-        }
-
-        /* Media Queries */
-        @media only screen and (max-width: 767px) {
-            .logo {
-
-
-                h1 {
-                    animation: grow 1s linear infinite;
-                    animation-play-state: paused;
-                }
-
-                .logo:hover h1 {
-                    animation-play-state: running;
-                }
-
-            }
-        }
-
-    }
-
-    &#about,
-    &#projects,
-    &#skills,
-    &#contact {
-        background: rgb(30, 41, 59);
-    }
-
-}
-
-#about {
-
-
-
-    .profile {
-        height: 90%;
-        display: flex;
-        flex-wrap: wrap;
-        align-content: center;
-    }
-
-    img {
-        width: 67%;
-        max-height: 60%;
-        margin-top: 40px;
-        margin-left: 20px;
-    }
-
-    p {
-        width: 55%;
-        max-height: 40%;
-        margin: 0px 20px 0px 45%;
-        padding: 5px;
-        overflow: auto;
-        position: relative;
-        top: -50px;
-        background: #131313;
-    }
-
-    /* Media Queries */
-    @media only screen and (max-width: 767px) {
-
-        .profile {
-            align-content: center;
-            justify-content: center;
-        }
-
-        img {
-            width: 87%;
-            min-height: 50%;
-            max-height: 60%;
-            margin: 0;
-        }
-
-        p {
-            width: 80%;
-            height: 40%;
-            margin: 0;
-        }
-    }
-}
-
-
-
-@keyframes grow {
+@keyframes moveLeftRightFade {
     0% {
         left: 20px;
     }
@@ -446,12 +76,412 @@ section {
     }
 }
 
+@keyframes fill {
+    0% {
+        width: 5%;
+    }
+
+    100% {
+        width: 5%;
+    }
+}
+
+@keyframes fill-hover {
+    from {
+        width: 0;
+    }
+
+    to {
+        width: var(--skill-level);
+    }
+}
+
+body {
+    font-family: "Lato", sans-serif;
+    overflow-x: hidden;
+    color: $textColor;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Classe pour cacher les sections */
+.hide {
+    display: none;
+}
+
+/* Thème clair */
+.light {
+    background-image: url(../assets/pexels-francesco-ungaro-281260.jpg);
+    background-size: cover;
+}
+
+.logo.light2 {
+    background: $backgroundLight;
+}
+
+.animated-text.light4 {
+    background-image: url(../assets/pexels-francesco-ungaro-281260.jpg);
+    background-size: cover;
+}
+
+.animated-text span.light5 {
+    background: $backgroundLight;
+}
+
+.header.light6 {
+    background: $backgroundLight;
+}
+
+.light6 {
+    background: $backgroundLight;
+}
+
+#about.light7,
+#projects.light7,
+#skills.light7,
+#contact.light7 {
+    background: $backgroundSection2;
+}
+
+.light8 {
+    color: $textColor2;
+}
+
+.header nav a.light8 {
+    color: $textColor2;
+}
+
+.toggle-nav.light8 {
+    color: $textColor2;
+}
+
+#about .profile p.light9 {
+    background: #03579f;
+}
+
+.animated-text {
+    display: none;
+    position: fixed;
+    z-index: 1001;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-image: url(../assets/pexels-aleksandar-pasaric-1694000.jpg);
+    background-size: cover;
+    font-size: 2em;
+    padding-top: 50vh;
+    font-family: "Ysabeau Office", sans-serif;
+}
+
+.animate {
+    display: block;
+    animation: enlargeAndDisappear 1s ease forwards;
+    transform-origin: center;
+}
+
+.animated-text span {
+    background: $ballText;
+}
+
+header {
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+    z-index: 1000;
+    background-image: url(../assets/pexels-aleksandar-pasaric-1694000.jpg);
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    overflow-x: hidden;
+
+    .ball {
+        width: 100px;
+        height: 100px;
+        background: $ballColor;
+        color: $textColor;
+        border-radius: 50%;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        transition: transform 0.5s ease;
+    }
+
+    .ball.move-right {
+        transform: translateX(calc(100vw - 140px));
+        background: $ballColor2;
+        color: $ballText;
+    }
+
+    .ball::before,
+    .ball::after {
+        content: "";
+        position: absolute;
+
+        z-index: -1;
+        border-radius: 50%;
+    }
+
+    .ball::before {
+        width: 200px;
+        height: 200px;
+        top: -50px;
+        left: -50px;
+        background: $ballAB;
+    }
+
+    .ball::after {
+        width: 300px;
+        height: 300px;
+        top: -100px;
+        left: -100px;
+        background: $ballAB;
+    }
+
+    .ball.move-right::before {
+        background: $ballAB2;
+    }
+
+    .ball.move-right::after {
+        background: $ballAB2;
+    }
+
+    .logo {
+        width: 100%;
+        background: #100024;
+
+        h1 {
+            font-size: 4em;
+            font-family: "Ysabeau Office", sans-serif;
+            margin: 0;
+
+            animation: moveLeftToRight 2s cubic-bezier(0.47, 0.2, 1, -0.35) 1s;
+        }
+    }
+
+    nav {
+        margin: 1em;
+
+        a {
+            color: $textColor;
+            padding: 5px;
+            text-decoration: none;
+            font-size: 1.1em;
+            font-weight: 700;
+            margin-right: 20px;
+            transition: color 0.3s ease;
+
+            &:hover {
+                color: $aNButtonHover;
+            }
+        }
+    }
+
+    .toggle-nav {
+        display: none;
+        background: transparent;
+        border: none;
+        color: $textColor;
+        font-size: 1em;
+        margin: 1em 0;
+        font-weight: 700;
+        cursor: pointer;
+        transition: color 0.3s ease;
+    }
+
+    .toggle-nav:hover {
+        color: $aNButtonHover;
+    }
+
+    /* Media Queries */
+    @media only screen and (max-width: 767px) {
+        .ball {
+            width: 75px;
+            height: 75px;
+        }
+
+        .ball::before {
+            width: 175px;
+            height: 175px;
+        }
+
+        .ball::after {
+            width: 275px;
+            height: 275px;
+        }
+
+        .ball.move-right {
+            transform: translateX(calc(100vw - 125px));
+            background: rgb(255, 255, 106);
+            color: $ballText;
+        }
+
+        h3 {
+            font-size: 1em;
+        }
+
+        .logo {
+            h1 {
+                font-size: 2em;
+            }
+        }
+
+        nav {
+            display: none;
+
+            a {
+                margin-right: 0;
+                text-align: center;
+
+                font-size: 1em;
+            }
+        }
+
+        nav.active {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .toggle-nav {
+            display: block;
+        }
+    }
+
+    @media only screen and (min-width: 768px) and (max-width: 1023px) {
+        height: 100vh;
+
+        .logo {
+            h1 {
+                font-size: 3em;
+            }
+        }
+    }
+}
+
+section {
+    width: 100%;
+    height: 100vh;
+    box-sizing: border-box;
+
+    .header {
+        background: $backgroundHNFNP;
+        box-shadow: 0px 13px 13px 0px rgba(0, 0, 0, 0.33);
+
+        .logo {
+            cursor: pointer;
+
+            h2 {
+                position: relative;
+                left: 20px;
+                text-align: center;
+                font-family: "Ysabeau Office", sans-serif;
+                margin: 0;
+                padding: 20px;
+                animation: moveLeftRightFade 0.75s linear infinite;
+                animation-play-state: paused;
+            }
+        }
+
+        .logo:hover h2 {
+            animation-play-state: running;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-around;
+
+            a {
+                color: $textColor;
+                text-decoration: none;
+            }
+        }
+
+        /* Media Queries */
+        @media only screen and (max-width: 767px) {
+            .logo {
+                h2 {
+                    animation: moveLeftRightFade 0.75s linear infinite;
+                    animation-play-state: paused;
+                }
+
+                .logo:hover h2 {
+                    animation-play-state: running;
+                }
+            }
+        }
+    }
+
+    &#about,
+    &#projects,
+    &#skills,
+    &#contact {
+        background: $backgroundSection;
+    }
+
+    .title {
+        border: 1px solid $ballText;
+        transition: font-size 1s ease;
+
+        font-size: 13vw;
+    }
+}
+
+#about {
+    .profile {
+        height: 90%;
+        display: flex;
+        flex-wrap: wrap;
+        align-content: center;
+    }
+
+    img {
+        width: 67%;
+        max-height: 60%;
+        margin-top: 40px;
+        margin-left: 20px;
+    }
+
+    p {
+        width: 55%;
+        max-height: 40%;
+        margin: 0px 20px 0px 45%;
+        padding: 5px;
+        overflow: auto;
+        position: relative;
+        top: -50px;
+        background: $backgroundHNFNP;
+    }
+
+    /* Media Queries */
+    @media only screen and (max-width: 767px) {
+        .profile {
+            align-content: center;
+            justify-content: center;
+        }
+
+        img {
+            width: 87%;
+            min-height: 50%;
+            max-height: 60%;
+            margin: 0;
+        }
+
+        p {
+            width: 80%;
+            height: 40%;
+            margin: 0;
+        }
+    }
+}
+
 #skills {
     .skills {
         height: 88%;
         display: flex;
         justify-content: space-around;
-
 
         .front-end {
             width: 45%;
@@ -467,11 +497,10 @@ section {
             list-style: none;
             padding: 0;
             margin: 0;
-            height: 100%;
+            height: 90%;
             display: flex;
             flex-direction: column;
             justify-content: space-around;
-
         }
 
         li {
@@ -491,7 +520,7 @@ section {
             height: 100%;
             width: var(--skill-level);
             border-radius: 10px;
-            background-color: #4CAF50;
+            background: $skillBarr;
         }
 
         .skill-bar:hover .skill-level {
@@ -531,35 +560,8 @@ section {
     }
 }
 
-
-
-@keyframes fill {
-    0% {
-        width: 5px;
-    }
-
-    100% {
-        width: 5%;
-    }
-}
-
-@keyframes fill-hover {
-    from {
-        width: 0;
-    }
-
-    to {
-        width: var(--skill-level);
-    }
-}
-
 #projects {
-
     height: auto;
-
-    h2 {
-        width: 100%;
-    }
 
     .projects {
         width: 100%;
@@ -575,7 +577,6 @@ section {
         min-width: 200px;
         margin: 20px;
         height: calc(50% - 40px);
-        background-color: white;
         box-sizing: border-box;
         border-radius: 8px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -583,7 +584,7 @@ section {
 
         &:hover {
             transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
         }
 
         img {
@@ -592,27 +593,13 @@ section {
             object-fit: cover;
             display: block;
         }
-
-        button {
-            width: 100%;
-            height: 7%;
-            text-align: center;
-            background: $background3;
-            color: $darkPurple;
-            border: none;
-            border-top: 1px solid #ddd;
-            cursor: pointer;
-            transition: color 0.3s ease;
-
-            &:hover {
-                color: white;
-            }
-        }
-
     }
 }
 
 #contact {
+    p {
+        margin-left: 10px;
+    }
 
     .form-container {
         width: 100%;
@@ -642,15 +629,15 @@ section {
 
             button {
                 padding: 10px 20px;
-                background: $background3;
-                color: white;
+                background: $backgroundButton;
+                color: $textColor2;
                 border: none;
                 border-radius: 5px;
                 cursor: pointer;
                 transition: color 0.3s ease;
 
                 &:hover {
-                    color: transparent;
+                    color: $aNButtonHover;
                 }
             }
         }
@@ -660,7 +647,6 @@ section {
             min-height: 60%;
         }
     }
-
 
     /* Media Queries */
     @media only screen and (max-width: 767px) {
@@ -683,7 +669,7 @@ section {
 }
 
 footer {
-    background: #131313;
+    background: $backgroundHNFNP;
     padding: 20px;
     text-align: center;
     box-shadow: 0px -13px 13px 0px rgba(0, 0, 0, 0.33);
@@ -693,14 +679,10 @@ footer {
     align-items: center;
 
     .logo {
-
-
-
-        h1 {
+        h2 {
             font-size: 2em;
             font-family: "Ysabeau Office", sans-serif;
             margin: 0;
-
         }
     }
 
@@ -710,7 +692,6 @@ footer {
     }
 
     div {
-
         span {
             display: block;
             font-weight: bold;
@@ -718,12 +699,12 @@ footer {
         }
 
         a {
-            color: rgb(190, 190, 190);
+            color: $textColor;
             text-decoration: underline;
             transition: color 0.3s ease;
 
             &:hover {
-                color: white;
+                color: $textColor2;
             }
         }
     }
@@ -743,15 +724,14 @@ footer {
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 1001;
-    background-color: transparent;
-    width: 100%;
-    height: 90%;
+    background: $backgroundModal;
+    width: 70%;
+    height: 80%;
 
     &-content {
         height: 100%;
 
         h2 {
-            border: none;
             text-align: center;
         }
 
@@ -778,13 +758,12 @@ footer {
                 transition: 0.6s ease;
                 user-select: none;
                 border: none;
-                background-color: transparent;
-                color: black;
+                background: $arrow;
                 opacity: 0.5;
 
                 &:hover {
                     opacity: 1;
-                    background-color: rgba(255, 255, 255, 0.9);
+                    background-color: $arrow2;
                 }
             }
 
@@ -804,35 +783,33 @@ footer {
         }
 
         a {
-            color: rgb(190, 190, 190);
+            color: $textColor;
             width: 100%;
             display: block;
-            background-color: rgba(255, 255, 255, 0.1);
+            background-color: $ballAB;
             text-align: center;
         }
     }
 
     /* Media Queries */
     @media only screen and (max-width: 767px) {
-
-
-        overflow: auto;
+        width: 100%;
+        overflow-y: auto;
+        overflow-x: hidden;
 
         &-content {
             .carousel {
-                height: 50%;
+                height: 45%;
             }
         }
     }
 
     @media only screen and (min-width: 768px) and (max-width: 1023px) {
         &-content {
-
             .carousel {
                 height: 60%;
             }
         }
-
     }
 }
 
@@ -843,8 +820,9 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
+    background: $overlay;
     z-index: 1000;
+    cursor: pointer;
 }
 
 .close {
@@ -853,4 +831,10 @@ footer {
     right: 30px;
     font-size: 30px;
     cursor: pointer;
+
+    /* Media Queries */
+    @media only screen and (max-width: 767px) {
+        top: -15px;
+        right: 15px;
+    }
 }

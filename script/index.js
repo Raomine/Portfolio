@@ -1,156 +1,185 @@
-// script thème
-const themeButton = document.getElementById("themeButton");
-const header = document.querySelector("header");
-const logo = document.querySelector(".logo");
-const links = document.querySelectorAll("nav a");
-const animated = document.querySelector(".animated-text");
-const animatedSpan = document.querySelector(".animated-text span");
-const headers = document.querySelectorAll(".header");
-const footer = document.querySelector("footer");
-const sectionsColor = document.querySelectorAll("section");
-const text = document.querySelectorAll("body, a");
-const pColor = document.querySelector(".profile p");
-
-themeButton.addEventListener("click", function () {
-  header.classList.toggle("light");
-  logo.classList.toggle("light2");
-  animated.classList.toggle("light4");
-  animatedSpan.classList.toggle("light5");
-  headers.forEach((header) => {
-    header.classList.toggle("light6");
-  });
-  footer.classList.toggle("light6");
-  sectionsColor.forEach((section) => {
-    section.classList.toggle("light7");
-  });
-  text.forEach((text) => {
-    text.classList.toggle("light8");
-  });
-  pColor.classList.toggle("light9");
-});
-
-// Script pour déplacer le bouton au clic
-
-themeButton.addEventListener("click", function () {
-  themeButton.classList.toggle("move-right");
-});
-
-// Déplacement entre section
 document.addEventListener("DOMContentLoaded", function () {
-  const navLinks = document.querySelectorAll("nav a");
+  const themeButton = document.getElementById("themeButton");
   const header = document.querySelector("header");
+  const logo = document.querySelector(".logo");
+  const links = document.querySelectorAll("nav a");
+  const headerLinks = document.querySelectorAll("header nav a");
+  const animated = document.querySelector(".animated-text");
+  const animatedSpan = document.querySelector(".animated-text span");
+  const headers = document.querySelectorAll(".header");
+  const footer = document.querySelector("footer");
+  const sectionsColor = document.querySelectorAll("section");
+  const text = document.querySelectorAll("body, a");
+  const pColor = document.querySelector(".profile p");
+  const toggleNavButton = document.querySelector(".toggle-nav");
+  const navMenu = document.querySelector("nav");
 
-  navLinks.forEach(function (navLink) {
+  // Theme toggler
+  themeButton.addEventListener("click", function () {
+    toggleTheme();
+    moveThemeButton();
+  });
+
+  function toggleTheme() {
+    header.classList.toggle("light");
+    logo.classList.toggle("light2");
+    animated.classList.toggle("light4");
+    animatedSpan.classList.toggle("light5");
+    headers.forEach((header) => {
+      header.classList.toggle("light6");
+    });
+    footer.classList.toggle("light6");
+    sectionsColor.forEach((section) => {
+      section.classList.toggle("light7");
+    });
+    text.forEach((text) => {
+      text.classList.toggle("light8");
+    });
+    pColor.classList.toggle("light9");
+  }
+
+  function moveThemeButton() {
+    themeButton.classList.toggle("move-right");
+  }
+
+  // Navigation
+  links.forEach(function (navLink) {
     navLink.addEventListener("click", function () {
-      // Masquer le header
-      header.classList.add("hide");
-
-      // Récupérer l'ID de la section cible
-      const targetId = navLink.getAttribute("href").substring(1);
-
-      // Masquer la section actuelle
-      const currentSection = document.querySelector("section:not(.hide)");
-      if (currentSection) {
-        currentSection.classList.add("hide");
-      }
-
-      // Afficher la section cible
-      document.getElementById(targetId).classList.remove("hide");
+      hideHeader();
+      showSection(navLink);
     });
   });
 
-  // Gestion des logos de section
+  function hideHeader() {
+    header.classList.add("hide");
+  }
+
+  function showSection(navLink) {
+    const targetId = navLink.getAttribute("href").substring(1);
+    const currentSection = document.querySelector("section:not(.hide)");
+    if (currentSection) {
+      currentSection.classList.add("hide");
+    }
+    document.getElementById(targetId).classList.remove("hide");
+  }
+
+  // Section logo click
   const sectionLogos = document.querySelectorAll(".logo");
   sectionLogos.forEach(function (logo) {
     logo.addEventListener("click", function () {
-      // Retirer la classe qui masque le header
-      header.classList.remove("hide");
+      showHeader();
+      hideAllSections();
+    });
+  });
 
-      // Masquer la section actuelle
-      const currentSection = document.querySelector("section:not(.hide)");
-      if (currentSection) {
-        currentSection.classList.add("hide");
+  function showHeader() {
+    header.classList.remove("hide");
+  }
+
+  function hideAllSections() {
+    const currentSection = document.querySelector("section:not(.hide)");
+    if (currentSection) {
+      currentSection.classList.add("hide");
+    }
+  }
+
+  // Animated text
+  const animatedText = document.getElementById("animatedText");
+  headerLinks.forEach(function (link) {
+    link.addEventListener("click", function () {
+      animateText();
+    });
+  });
+
+  function animateText() {
+    const textToAnimate = animatedText.firstChild;
+    animatedText.style.display = "block";
+    textToAnimate.classList.add("animate");
+    textToAnimate.addEventListener("animationend", function () {
+      textToAnimate.classList.remove("animate");
+      animatedText.style.display = "none";
+    });
+  }
+
+  // Menu toggle
+  toggleNavButton.addEventListener("click", function () {
+    navMenu.classList.toggle("active");
+  });
+
+  // Title animations
+  const observerIn = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        animateTitle(entry.target.querySelector(".title"));
       }
     });
   });
-});
 
-// Animation Hicham
-document.addEventListener("DOMContentLoaded", function () {
-  var links = document.querySelectorAll("header nav a");
-  var animatedText = document.getElementById("animatedText");
-
-  links.forEach(function (link) {
-    link.addEventListener("click", function () {
-      var textToAnimate = animatedText.firstChild;
-      animatedText.style.display = "block";
-      textToAnimate.classList.add("animate");
-
-      textToAnimate.addEventListener("animationend", function () {
-        textToAnimate.classList.remove("animate");
-
-        animatedText.style.display = "none";
-        textToAnimate.removeEventListener("animationend", this);
-      });
+  const observerOut = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) {
+        resetTitleFontSize(entry.target.querySelector(".title"));
+      }
     });
   });
-});
 
-// Menu Nav
-const toggleNavButton = document.querySelector(".toggle-nav");
+  const sectionsToObserve = document.querySelectorAll("section");
+  sectionsToObserve.forEach((section) => {
+    observerIn.observe(section);
+    observerOut.observe(section);
+  });
 
-const navMenu = document.querySelector("nav");
+  function animateTitle(title) {
+    title.style.fontSize = "13vw";
+    setTimeout(() => {
+      title.style.fontSize = "0em";
+    }, 1000);
+  }
 
-toggleNavButton.addEventListener("click", function () {
-  navMenu.classList.toggle("active");
-});
+  function resetTitleFontSize(title) {
+    title.style.fontSize = "13vw";
+  }
 
-// Fonction pour animer les titres
-function animateTitle(title) {
-  title.style.fontSize = "13vw";
+  // Skillbars
+  const skillBars = document.querySelectorAll(".skill-bar");
+  skillBars.forEach((skillBar) => {
+    skillBar.addEventListener("mouseover", () => {
+      startAnimation(skillBar);
+    });
+    skillBar.addEventListener("mouseout", () => {
+      stopAnimation(skillBar);
+    });
+  });
 
-  setTimeout(() => {
-    title.style.fontSize = "0em";
-  }, 2200);
-}
+  // Project modals
 
-// Créer un observateur d'intersection
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    // Vérifier si la section est dans le viewport
-    if (entry.isIntersecting) {
-      // Récupérer le titre de la section
-      const title = entry.target.querySelector("h2");
-
-      animateTitle(title);
-    }
+  document.getElementById("button").addEventListener("click", function () {
+    alert("Form submission successful!");
   });
 });
 
-const sectionsToObserve = document.querySelectorAll("section");
-
-// Attacher l'observateur d'intersection à chaque élément à observer
-sectionsToObserve.forEach((section) => {
-  observer.observe(section);
-});
-
-//////////// Skillbars ////////////////
+// Skillbars
 function startAnimation(element) {
-  let skillLevel = element.querySelector(".skill-level");
+  const skillLevel = element.querySelector(".skill-level");
   skillLevel.style.width = "var(--skill-level)";
   skillLevel.classList.remove("infinite");
 }
 
 function stopAnimation(element) {
-  let skillLevel = element.querySelector(".skill-level");
+  const skillLevel = element.querySelector(".skill-level");
   skillLevel.style.width = "var(--skill-level)";
 }
 
-////////////////// Modals /////////////////
-let currentSlideIndex = 0;
-let currentProject = null;
+// Project modals
+const projectModal = document.getElementById("projectModal");
+const modalTitle = document.getElementById("modalTitle");
+const modalDescription = document.getElementById("modalDescription");
+const modalImage = document.getElementById("modalImage");
+const modalPrev = document.querySelector(".prev");
+const modalNext = document.querySelector(".next");
+const modalOverlay = document.getElementById("overlay");
 
-let projects = {
+const projects = {
   project2: {
     title: "Premiers pas sur le langage HTML",
     description: `Le projet consistait à modifier le site web de l'association Riding Cities pour le faire correspondre à une maquette donnée. Voici les actions entreprises pour atteindre cet objectif : 
@@ -293,38 +322,23 @@ let projects = {
 };
 
 function openModal(projectKey) {
-  let project = projects[projectKey];
-  document.getElementById("modalTitle").innerText = project.title;
-  document.getElementById("modalDescription").innerText = project.description;
-  const modal = document.getElementById("projectModal");
-  const projectLink = modal.querySelector("a");
-
-  if (project.link) {
-    projectLink.href = project.link;
-    projectLink.style.display = "block";
-  } else {
-    projectLink.style.display = "none";
-  }
-
-  modal.style.display = "block";
-  document.body.style.overflow = "hidden";
-  document.getElementById("overlay").style.display = "block";
-
+  currentProject = projects[projectKey];
+  modalTitle.innerText = currentProject.title;
+  modalDescription.innerText = currentProject.description;
+  modalPrev.style.display = "none";
+  modalNext.style.display = currentProject.images.length > 1 ? "block" : "none";
   currentSlideIndex = 0;
-  currentProject = project;
   updateModalContent();
+  projectModal.style.display = "block";
+  modalOverlay.style.display = "block";
+  document.body.style.overflow = "hidden";
 }
 
+let currentProject = null;
+let currentSlideIndex = 0;
+
 function updateModalContent() {
-  let modalImage = document.getElementById("modalImage");
   modalImage.src = currentProject.images[currentSlideIndex];
-
-  let prevButton = document.querySelector(".prev");
-  let nextButton = document.querySelector(".next");
-
-  prevButton.style.display = currentSlideIndex === 0 ? "none" : "block";
-  nextButton.style.display =
-    currentSlideIndex === currentProject.images.length - 1 ? "none" : "block";
 }
 
 function prevSlide() {
@@ -341,17 +355,17 @@ function nextSlide() {
   }
 }
 
+modalPrev.addEventListener("click", prevSlide);
+modalNext.addEventListener("click", nextSlide);
+
 function closeModal() {
-  document.getElementById("projectModal").style.display = "none";
+  projectModal.style.display = "none";
+  modalOverlay.style.display = "none";
   document.body.style.overflow = "";
-  document.getElementById("overlay").style.display = "none";
 }
 
-window.onclick = function (event) {
-  let overlay = document.getElementById("overlay");
-  if (event.target === overlay) {
-    overlay.style.display = "none";
-    document.getElementById("projectModal").style.display = "none";
-    document.body.style.overflow = "";
+modalOverlay.addEventListener("click", function (event) {
+  if (event.target === modalOverlay) {
+    closeModal();
   }
-};
+});

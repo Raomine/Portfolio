@@ -51,13 +51,12 @@ body {
   color: white;
 }
 
-#about .profile p.light9 {
-  background: #03579f;
+.toggle-nav.light8 {
+  color: white;
 }
 
-h2 {
-  border: 1px solid #100024;
-  transition: font-size 2s ease;
+#about .profile p.light9 {
+  background: #03579f;
 }
 
 @keyframes enlargeAndDisappear {
@@ -91,12 +90,12 @@ h2 {
 
 .animate {
   display: block;
-  animation: enlargeAndDisappear 2s ease forwards;
+  animation: enlargeAndDisappear 1s ease forwards;
   transform-origin: center;
 }
 
 .animated-text span {
-  background-color: #100024;
+  background: #100024;
 }
 
 header {
@@ -116,7 +115,7 @@ header {
 header .ball {
   width: 100px;
   height: 100px;
-  background-color: #333;
+  background: #333;
   color: rgb(190, 190, 190);
   border-radius: 50%;
   position: absolute;
@@ -127,7 +126,7 @@ header .ball {
 header .ball.move-right {
   transform: translateX(calc(100vw - 140px));
   background: rgb(255, 255, 106);
-  color: black;
+  color: #100024;
 }
 header .ball::before,
 header .ball::after {
@@ -141,20 +140,20 @@ header .ball::before {
   height: 200px;
   top: -50px;
   left: -50px;
-  background-color: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.1);
 }
 header .ball::after {
   width: 300px;
   height: 300px;
   top: -100px;
   left: -100px;
-  background-color: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.1);
 }
 header .ball.move-right::before {
-  background-color: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.5);
 }
 header .ball.move-right::after {
-  background-color: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.5);
 }
 header .logo {
   width: 100%;
@@ -165,6 +164,9 @@ header .logo h1 {
   font-family: "Ysabeau Office", sans-serif;
   margin: 0;
   animation: moveLeftToRight 2s cubic-bezier(0.47, 0.2, 1, -0.35) 1s;
+}
+header nav {
+  margin: 1em;
 }
 header nav a {
   color: rgb(190, 190, 190);
@@ -184,6 +186,7 @@ header .toggle-nav {
   border: none;
   color: rgb(190, 190, 190);
   font-size: 1em;
+  margin: 1em 0;
   font-weight: 700;
   cursor: pointer;
   transition: color 0.3s ease;
@@ -195,6 +198,19 @@ header .toggle-nav:hover {
   header .ball {
     width: 75px;
     height: 75px;
+  }
+  header .ball::before {
+    width: 175px;
+    height: 175px;
+  }
+  header .ball::after {
+    width: 275px;
+    height: 275px;
+  }
+  header .ball.move-right {
+    transform: translateX(calc(100vw - 125px));
+    background: rgb(255, 255, 106);
+    color: #100024;
   }
   header h3 {
     font-size: 1em;
@@ -213,8 +229,6 @@ header .toggle-nav:hover {
   header nav.active {
     display: flex;
     flex-direction: column;
-    position: relative;
-    top: 50px;
   }
   header .toggle-nav {
     display: block;
@@ -252,18 +266,17 @@ section .header {
 section .header .logo {
   cursor: pointer;
 }
-section .header .logo h1 {
+section .header .logo h2 {
   position: relative;
   left: 20px;
   text-align: center;
-  font-size: 1.5em;
   font-family: "Ysabeau Office", sans-serif;
   margin: 0;
   padding: 20px;
-  animation: grow 1s linear infinite;
+  animation: grow 0.75s linear infinite;
   animation-play-state: paused;
 }
-section .header .logo:hover h1 {
+section .header .logo:hover h2 {
   animation-play-state: running;
 }
 section .header nav {
@@ -275,16 +288,21 @@ section .header nav a {
   text-decoration: none;
 }
 @media only screen and (max-width: 767px) {
-  section .header .logo h1 {
-    animation: grow 1s linear infinite;
+  section .header .logo h2 {
+    animation: grow 0.75s linear infinite;
     animation-play-state: paused;
   }
-  section .header .logo .logo:hover h1 {
+  section .header .logo .logo:hover h2 {
     animation-play-state: running;
   }
 }
 section#about, section#projects, section#skills, section#contact {
   background: rgb(30, 41, 59);
+}
+section .title {
+  border: 1px solid #100024;
+  transition: font-size 1s ease;
+  font-size: 13vw;
 }
 
 #about {
@@ -373,7 +391,7 @@ section#about, section#projects, section#skills, section#contact {
   list-style: none;
   padding: 0;
   margin: 0;
-  height: 100%;
+  height: 90%;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -443,9 +461,6 @@ section#about, section#projects, section#skills, section#contact {
 #projects {
   height: auto;
 }
-#projects h2 {
-  width: 100%;
-}
 #projects .projects {
   width: 100%;
   min-height: 90vh;
@@ -493,6 +508,9 @@ section#about, section#projects, section#skills, section#contact {
 
 #contact {
   /* Media Queries */
+}
+#contact p {
+  margin-left: 10px;
 }
 #contact .form-container {
   width: 100%;
@@ -561,7 +579,7 @@ footer {
   align-items: center;
   /* Media Queries */
 }
-footer .logo h1 {
+footer .logo h2 {
   font-size: 2em;
   font-family: "Ysabeau Office", sans-serif;
   margin: 0;
@@ -597,15 +615,14 @@ footer div a:hover {
   transform: translate(-50%, -50%);
   z-index: 1001;
   background-color: transparent;
-  width: 100%;
-  height: 90%;
+  width: 70%;
+  height: 80%;
   /* Media Queries */
 }
 .modal-content {
   height: 100%;
 }
 .modal-content h2 {
-  border: none;
   text-align: center;
 }
 .modal-content .carousel {
@@ -661,10 +678,12 @@ footer div a:hover {
 }
 @media only screen and (max-width: 767px) {
   .modal {
-    overflow: auto;
+    width: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
   }
   .modal-content .carousel {
-    height: 50%;
+    height: 45%;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
@@ -682,6 +701,7 @@ footer div a:hover {
   height: 100%;
   background-color: rgba(0, 0, 0, 0.9);
   z-index: 1000;
+  cursor: pointer;
 }
 
 .close {
@@ -690,4 +710,11 @@ footer div a:hover {
   right: 30px;
   font-size: 30px;
   cursor: pointer;
+  /* Media Queries */
+}
+@media only screen and (max-width: 767px) {
+  .close {
+    top: -15px;
+    right: 15px;
+  }
 }/*# sourceMappingURL=index.css.map */
