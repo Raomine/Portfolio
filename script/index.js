@@ -23,6 +23,9 @@ document.addEventListener("DOMContentLoaded", function () {
   function toggleTheme() {
     header.classList.toggle("light");
     logo.classList.toggle("light2");
+    skillBars.forEach((skillBar) => {
+      skillBar.classList.toggle("light3");
+    });
     animated.classList.toggle("light4");
     animatedSpan.classList.toggle("light5");
     headers.forEach((header) => {
@@ -35,6 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
     text.forEach((text) => {
       text.classList.toggle("light8");
     });
+    toggleNavButton.classList.toggle("light8");
     pColor.classList.toggle("light9");
   }
 
@@ -151,8 +155,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Project modals
-
+  // Form
   document.getElementById("button").addEventListener("click", function () {
     alert("Form submission successful!");
   });
@@ -178,6 +181,7 @@ const modalImage = document.getElementById("modalImage");
 const modalPrev = document.querySelector(".prev");
 const modalNext = document.querySelector(".next");
 const modalOverlay = document.getElementById("overlay");
+const linkElement = document.querySelector(".modal-content a");
 
 const projects = {
   project2: {
@@ -196,13 +200,9 @@ const projects = {
     description:
       "Ce projet consistait à créer la page d'accueil d'une agence de voyage en utilisant HTML et CSS. À travers différentes étapes, j'ai mis en place l'environnement de développement, découpé la maquette, intégré les différents éléments tels que le header, le formulaire de recherche, les filtres, les cartes d'hébergement et d'activités, ainsi que le footer. J'ai également assuré la compatibilité du site avec les différents écrans grâce au responsive design. En respectant les bonnes pratiques et en vérifiant la qualité du code.",
     images: [
-      "../assets/modals/P3-header.jpg",
-      "../assets/modals/P3-form.jpg",
-      "../assets/modals/P3-filters.jpg",
-      "../assets/modals/P3-hebergements.jpg",
-      "../assets/modals/P3-activites.jpg",
-      "../assets/modals/P3-footer.jpg",
-      "../assets/modals/P3-Booki.jpg",
+      "../assets/modals/P3-site1.jpg",
+      "../assets/modals/P3-site2.jpg",
+      "../assets/modals/P3-site3.jpg",
     ],
   },
 
@@ -211,11 +211,10 @@ const projects = {
     description:
       "Au cours de ce projet, j'ai établi un environnement de développement solide, intégré la version mobile de la page d'accueil du site avec des animations CSS harmonieuses, assuré sa réactivité pour différents appareils, et reproduit ce processus pour les pages des restaurants. J'ai maintenu une structure claire et optimisé l'efficacité du code en utilisant Sass et en évitant les duplications inutiles. Enfin, j'ai effectué une revue minutieuse pour garantir la conformité aux maquettes et la qualité du rendu final.",
     images: [
-      "../assets/modals/P4-homepage.jpg",
-      "../assets/modals/P4-resto1.jpg",
-      "../assets/modals/P4-resto2.jpg",
-      "../assets/modals/P4-resto3.jpg",
-      "../assets/modals/P4-resto4.jpg",
+      "../assets/modals/P4-site1.jpg",
+      "../assets/modals/P4-site2.jpg",
+      "../assets/modals/P4-site3.jpg",
+      "../assets/modals/P4-site4.jpg",
     ],
     link: "https://github.com/Raomine/Projet_4",
   },
@@ -227,8 +226,7 @@ const projects = {
     Étape 2 : Ajout d'Event Listeners sur les flèches
     Étape 3 : Ajout des bullet points au slider
     Étape 4 : Modification du slide au clic sur le bouton
-    Étape 5 : Mise en place du défilement infini sur le carrousel
-    Lien Github, <a href="https://github.com/Raomine/Projet_5" target="_blank">Projet 5</a>.`,
+    Étape 5 : Mise en place du défilement infini sur le carrousel`,
     images: [
       "../assets/modals/P5-carousel1.jpg",
       "../assets/modals/P5-carousel2.jpg",
@@ -321,37 +319,61 @@ const projects = {
   },
 };
 
+let currentProject = null;
+let currentSlideIndex = 0;
+
 function openModal(projectKey) {
   currentProject = projects[projectKey];
   modalTitle.innerText = currentProject.title;
   modalDescription.innerText = currentProject.description;
-  modalPrev.style.display = "none";
-  modalNext.style.display = currentProject.images.length > 1 ? "block" : "none";
+  if (currentProject.link) {
+    linkElement.style.display = "block";
+    linkElement.href = currentProject.link;
+  } else {
+    linkElement.style.display = "none";
+  }
+
   currentSlideIndex = 0;
-  updateModalContent();
+
   projectModal.style.display = "block";
   modalOverlay.style.display = "block";
   document.body.style.overflow = "hidden";
-}
 
-let currentProject = null;
-let currentSlideIndex = 0;
+  updateModalContent();
+}
 
 function updateModalContent() {
   modalImage.src = currentProject.images[currentSlideIndex];
+
+  modalPrev.style.display = currentSlideIndex === 0 ? "none" : "block";
+  modalNext.style.display =
+    currentSlideIndex === currentProject.images.length - 1 ? "none" : "block";
 }
 
+let isTransitioning = false;
+
 function prevSlide() {
-  if (currentSlideIndex > 0) {
+  if (!isTransitioning && currentSlideIndex > 0) {
+    isTransitioning = true;
     currentSlideIndex--;
     updateModalContent();
+    setTimeout(() => {
+      isTransitioning = false;
+    }, 100);
   }
 }
 
 function nextSlide() {
-  if (currentSlideIndex < currentProject.images.length - 1) {
+  if (
+    !isTransitioning &&
+    currentSlideIndex < currentProject.images.length - 1
+  ) {
+    isTransitioning = true;
     currentSlideIndex++;
     updateModalContent();
+    setTimeout(() => {
+      isTransitioning = false;
+    }, 100);
   }
 }
 

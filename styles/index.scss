@@ -78,11 +78,11 @@ $overlay: rgba(0, 0, 0, 0.9);
 
 @keyframes fill {
     0% {
-        width: 5%;
+        width: 3%;
     }
 
     100% {
-        width: 5%;
+        width: 4%;
     }
 }
 
@@ -111,7 +111,7 @@ body {
 
 /* Thème clair */
 .light {
-    background-image: url(../assets/pexels-francesco-ungaro-281260.jpg);
+    background-image: url(../assets/background2.jpg);
     background-size: cover;
 }
 
@@ -119,8 +119,12 @@ body {
     background: $backgroundLight;
 }
 
+#skills .skills .skill-bar.light3 {
+    background: $textColor2;
+}
+
 .animated-text.light4 {
-    background-image: url(../assets/pexels-francesco-ungaro-281260.jpg);
+    background-image: url(../assets/background2.jpg);
     background-size: cover;
 }
 
@@ -167,7 +171,7 @@ body {
     left: 0;
     width: 100%;
     height: 100vh;
-    background-image: url(../assets/pexels-aleksandar-pasaric-1694000.jpg);
+    background-image: url(../assets/background.jpg);
     background-size: cover;
     font-size: 2em;
     padding-top: 50vh;
@@ -189,7 +193,7 @@ header {
     height: 100vh;
     position: absolute;
     z-index: 1000;
-    background-image: url(../assets/pexels-aleksandar-pasaric-1694000.jpg);
+    background-image: url(../assets/background.jpg);
     background-size: cover;
     display: flex;
     flex-direction: column;
@@ -252,13 +256,14 @@ header {
     .logo {
         width: 100%;
         background: #100024;
+        box-shadow: 0px 0px 50px 13px rgba(255, 255, 255, 0.5);
 
         h1 {
             font-size: 4em;
             font-family: "Ysabeau Office", sans-serif;
             margin: 0;
 
-            animation: moveLeftToRight 2s cubic-bezier(0.47, 0.2, 1, -0.35) 1s;
+            animation: moveLeftToRight 2s cubic-bezier(0.47, 0.2, 1, -0.35) 3s;
         }
     }
 
@@ -376,6 +381,8 @@ section {
             h2 {
                 position: relative;
                 left: 20px;
+                font-size: 2rem;
+                text-shadow: 2px 2px 4px $textColor;
                 text-align: center;
                 font-family: "Ysabeau Office", sans-serif;
                 margin: 0;
@@ -396,6 +403,13 @@ section {
             a {
                 color: $textColor;
                 text-decoration: none;
+                font-weight: bold;
+                letter-spacing: 1px;
+                padding-bottom: 5px;
+            }
+
+            a:hover {
+                color: $backgroundButton;
             }
         }
 
@@ -431,48 +445,35 @@ section {
 
 #about {
     .profile {
-        height: 90%;
-        display: flex;
-        flex-wrap: wrap;
-        align-content: center;
+        height: 88%;
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        align-items: center;
+        gap: 2rem;
+        padding: 2rem;
     }
 
     img {
-        width: 67%;
-        max-height: 60%;
-        margin-top: 40px;
-        margin-left: 20px;
+        max-width: 100%;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     }
 
-    p {
-        width: 55%;
-        max-height: 40%;
-        margin: 0px 20px 0px 45%;
-        padding: 5px;
-        overflow: auto;
-        position: relative;
-        top: -50px;
+    .about-text {
+        font-size: 1.1rem;
+        line-height: 1.6;
         background: $backgroundHNFNP;
-    }
+        max-height: 80%;
+        overflow: auto;
+        padding: 15px;
 
-    /* Media Queries */
-    @media only screen and (max-width: 767px) {
-        .profile {
-            align-content: center;
-            justify-content: center;
-        }
-
-        img {
-            width: 87%;
-            min-height: 50%;
-            max-height: 60%;
-            margin: 0;
+        h2 {
+            margin-bottom: 0.5rem;
+            margin-top: 0;
         }
 
         p {
-            width: 80%;
-            height: 40%;
-            margin: 0;
+            margin-bottom: 1rem;
         }
     }
 }
@@ -507,19 +508,21 @@ section {
             margin-bottom: 30px;
             position: relative;
             font-size: 18px;
+            font-weight: bold;
         }
 
         .skill-bar {
-            background: white;
-            border-radius: 10px;
-            height: 30px;
+            margin-top: 10px;
+            background: $textColor;
+            height: 2.5rem;
+            border-radius: 2.5rem;
             position: relative;
         }
 
         .skill-level {
             height: 100%;
             width: var(--skill-level);
-            border-radius: 10px;
+            border-radius: 2.5rem;
             background: $skillBarr;
         }
 
@@ -574,9 +577,10 @@ section {
 
     .project {
         width: calc(20% - 40px);
-        min-width: 200px;
+        min-width: 300px;
         margin: 20px;
         height: calc(50% - 40px);
+        min-height: 300px;
         box-sizing: border-box;
         border-radius: 8px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -725,10 +729,13 @@ footer {
     transform: translate(-50%, -50%);
     z-index: 1001;
     background: $backgroundModal;
-    width: 70%;
-    height: 80%;
+    width: 800px;
+    height: 800px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
 
     &-content {
+        width: 100%;
         height: 100%;
 
         h2 {
@@ -758,11 +765,13 @@ footer {
                 transition: 0.6s ease;
                 user-select: none;
                 border: none;
+                color: $textColor;
                 background: $arrow;
                 opacity: 0.5;
 
                 &:hover {
                     opacity: 1;
+                    color: $arrow;
                     background-color: $arrow2;
                 }
             }
@@ -785,31 +794,32 @@ footer {
         a {
             color: $textColor;
             width: 100%;
-            display: block;
             background-color: $ballAB;
             text-align: center;
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
         }
     }
 
     /* Media Queries */
     @media only screen and (max-width: 767px) {
-        width: 100%;
+        width: 400px;
+        height: 400px;
+        max-width: 90%;
         overflow-y: auto;
-        overflow-x: hidden;
 
-        &-content {
-            .carousel {
-                height: 45%;
-            }
+        .prev,
+        .next {
+            width: 30px;
+            padding: 13px;
+            font-size: 20px;
         }
     }
 
     @media only screen and (min-width: 768px) and (max-width: 1023px) {
-        &-content {
-            .carousel {
-                height: 60%;
-            }
-        }
+        top: 45%;
+        width: 600px;
+        height: 600px;
     }
 }
 
@@ -827,8 +837,8 @@ footer {
 
 .close {
     position: absolute;
-    top: 0px;
-    right: 30px;
+    top: -15px;
+    right: 5px;
     font-size: 30px;
     cursor: pointer;
 

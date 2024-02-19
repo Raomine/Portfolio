@@ -1,3 +1,69 @@
+@charset "UTF-8";
+/* Définition des variables de couleur */
+/* Définition des animations */
+@keyframes enlargeAndDisappear {
+  0% {
+    font-size: 2em;
+    opacity: 1;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  100% {
+    font-size: 33vw;
+    opacity: 0;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+@keyframes moveLeftToRight {
+  0% {
+    transform: translateX(0);
+    text-shadow: -13px 0px 3px rgba(255, 255, 255, 0.5);
+  }
+  100% {
+    transform: translateX(100%);
+    text-shadow: -113px 0px 3px rgb(255, 255, 255);
+  }
+}
+@keyframes moveLeftRightFade {
+  0% {
+    left: 20px;
+  }
+  49% {
+    left: 99px;
+  }
+  50% {
+    left: 100px;
+    opacity: 0;
+  }
+  51% {
+    left: -100px;
+    opacity: 0;
+  }
+  70% {
+    left: -50px;
+    opacity: 1;
+  }
+  100% {
+    left: 20px;
+  }
+}
+@keyframes fill {
+  0% {
+    width: 3%;
+  }
+  100% {
+    width: 4%;
+  }
+}
+@keyframes fill-hover {
+  from {
+    width: 0;
+  }
+  to {
+    width: var(--skill-level);
+  }
+}
 body {
   font-family: "Lato", sans-serif;
   overflow-x: hidden;
@@ -6,12 +72,14 @@ body {
   margin: 0;
 }
 
+/* Classe pour cacher les sections */
 .hide {
   display: none;
 }
 
+/* Thème clair */
 .light {
-  background-image: url(../assets/pexels-francesco-ungaro-281260.jpg);
+  background-image: url(../assets/background2.jpg);
   background-size: cover;
 }
 
@@ -19,8 +87,12 @@ body {
   background: #03579f;
 }
 
+#skills .skills .skill-bar.light3 {
+  background: white;
+}
+
 .animated-text.light4 {
-  background-image: url(../assets/pexels-francesco-ungaro-281260.jpg);
+  background-image: url(../assets/background2.jpg);
   background-size: cover;
 }
 
@@ -59,20 +131,6 @@ body {
   background: #03579f;
 }
 
-@keyframes enlargeAndDisappear {
-  0% {
-    font-size: 2em;
-    opacity: 1;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-  100% {
-    font-size: 33vw;
-    opacity: 0;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-}
 .animated-text {
   display: none;
   position: fixed;
@@ -81,7 +139,7 @@ body {
   left: 0;
   width: 100%;
   height: 100vh;
-  background-image: url(../assets/pexels-aleksandar-pasaric-1694000.jpg);
+  background-image: url(../assets/background.jpg);
   background-size: cover;
   font-size: 2em;
   padding-top: 50vh;
@@ -103,7 +161,7 @@ header {
   height: 100vh;
   position: absolute;
   z-index: 1000;
-  background-image: url(../assets/pexels-aleksandar-pasaric-1694000.jpg);
+  background-image: url(../assets/background.jpg);
   background-size: cover;
   display: flex;
   flex-direction: column;
@@ -158,12 +216,13 @@ header .ball.move-right::after {
 header .logo {
   width: 100%;
   background: #100024;
+  box-shadow: 0px 0px 50px 13px rgba(255, 255, 255, 0.5);
 }
 header .logo h1 {
   font-size: 4em;
   font-family: "Ysabeau Office", sans-serif;
   margin: 0;
-  animation: moveLeftToRight 2s cubic-bezier(0.47, 0.2, 1, -0.35) 1s;
+  animation: moveLeftToRight 2s cubic-bezier(0.47, 0.2, 1, -0.35) 3s;
 }
 header nav {
   margin: 1em;
@@ -243,16 +302,6 @@ header .toggle-nav:hover {
   }
 }
 
-@keyframes moveLeftToRight {
-  0% {
-    transform: translateX(0);
-    text-shadow: -13px 0px 3px rgba(255, 255, 255, 0.5);
-  }
-  100% {
-    transform: translateX(100%);
-    text-shadow: -113px 0px 3px rgb(255, 255, 255);
-  }
-}
 section {
   width: 100%;
   height: 100vh;
@@ -269,11 +318,13 @@ section .header .logo {
 section .header .logo h2 {
   position: relative;
   left: 20px;
+  font-size: 2rem;
+  text-shadow: 2px 2px 4px rgb(190, 190, 190);
   text-align: center;
   font-family: "Ysabeau Office", sans-serif;
   margin: 0;
   padding: 20px;
-  animation: grow 0.75s linear infinite;
+  animation: moveLeftRightFade 0.75s linear infinite;
   animation-play-state: paused;
 }
 section .header .logo:hover h2 {
@@ -286,10 +337,16 @@ section .header nav {
 section .header nav a {
   color: rgb(190, 190, 190);
   text-decoration: none;
+  font-weight: bold;
+  letter-spacing: 1px;
+  padding-bottom: 5px;
+}
+section .header nav a:hover {
+  color: #e2c1ff;
 }
 @media only screen and (max-width: 767px) {
   section .header .logo h2 {
-    animation: grow 0.75s linear infinite;
+    animation: moveLeftRightFade 0.75s linear infinite;
     animation-play-state: paused;
   }
   section .header .logo .logo:hover h2 {
@@ -305,72 +362,35 @@ section .title {
   font-size: 13vw;
 }
 
-#about {
-  /* Media Queries */
-}
 #about .profile {
-  height: 90%;
-  display: flex;
-  flex-wrap: wrap;
-  align-content: center;
+  height: 88%;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
 }
 #about img {
-  width: 67%;
-  max-height: 60%;
-  margin-top: 40px;
-  margin-left: 20px;
+  max-width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-#about p {
-  width: 55%;
-  max-height: 40%;
-  margin: 0px 20px 0px 45%;
-  padding: 5px;
-  overflow: auto;
-  position: relative;
-  top: -50px;
+#about .about-text {
+  font-size: 1.1rem;
+  line-height: 1.6;
   background: #131313;
+  max-height: 80%;
+  overflow: auto;
+  padding: 15px;
 }
-@media only screen and (max-width: 767px) {
-  #about .profile {
-    align-content: center;
-    justify-content: center;
-  }
-  #about img {
-    width: 87%;
-    min-height: 50%;
-    max-height: 60%;
-    margin: 0;
-  }
-  #about p {
-    width: 80%;
-    height: 40%;
-    margin: 0;
-  }
+#about .about-text h2 {
+  margin-bottom: 0.5rem;
+  margin-top: 0;
+}
+#about .about-text p {
+  margin-bottom: 1rem;
 }
 
-@keyframes grow {
-  0% {
-    left: 20px;
-  }
-  49% {
-    left: 99px;
-  }
-  50% {
-    left: 100px;
-    opacity: 0;
-  }
-  51% {
-    left: -100px;
-    opacity: 0;
-  }
-  70% {
-    left: -50px;
-    opacity: 1;
-  }
-  100% {
-    left: 20px;
-  }
-}
 #skills {
   /* Media Queries */
 }
@@ -400,18 +420,20 @@ section .title {
   margin-bottom: 30px;
   position: relative;
   font-size: 18px;
+  font-weight: bold;
 }
 #skills .skills .skill-bar {
-  background: white;
-  border-radius: 10px;
-  height: 30px;
+  margin-top: 10px;
+  background: rgb(190, 190, 190);
+  height: 2.5rem;
+  border-radius: 2.5rem;
   position: relative;
 }
 #skills .skills .skill-level {
   height: 100%;
   width: var(--skill-level);
-  border-radius: 10px;
-  background-color: #4CAF50;
+  border-radius: 2.5rem;
+  background: #4caf50;
 }
 #skills .skills .skill-bar:hover .skill-level {
   animation: fill-hover 1s forwards;
@@ -442,22 +464,6 @@ section .title {
   }
 }
 
-@keyframes fill {
-  0% {
-    width: 5px;
-  }
-  100% {
-    width: 5%;
-  }
-}
-@keyframes fill-hover {
-  from {
-    width: 0;
-  }
-  to {
-    width: var(--skill-level);
-  }
-}
 #projects {
   height: auto;
 }
@@ -471,10 +477,10 @@ section .title {
 }
 #projects .project {
   width: calc(20% - 40px);
-  min-width: 200px;
+  min-width: 300px;
   margin: 20px;
   height: calc(50% - 40px);
-  background-color: white;
+  min-height: 300px;
   box-sizing: border-box;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -482,7 +488,7 @@ section .title {
 }
 #projects .project:hover {
   transform: translateY(-5px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
 }
 #projects .project img {
   width: 100%;
@@ -490,20 +496,6 @@ section .title {
   -o-object-fit: cover;
      object-fit: cover;
   display: block;
-}
-#projects .project button {
-  width: 100%;
-  height: 7%;
-  text-align: center;
-  background: #e2c1ff;
-  color: #100024;
-  border: none;
-  border-top: 1px solid #ddd;
-  cursor: pointer;
-  transition: color 0.3s ease;
-}
-#projects .project button:hover {
-  color: white;
 }
 
 #contact {
@@ -614,12 +606,15 @@ footer div a:hover {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 1001;
-  background-color: transparent;
-  width: 70%;
-  height: 80%;
+  background: transparent;
+  width: 800px;
+  height: 800px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
   /* Media Queries */
 }
 .modal-content {
+  width: 100%;
   height: 100%;
 }
 .modal-content h2 {
@@ -649,13 +644,14 @@ footer div a:hover {
      -moz-user-select: none;
           user-select: none;
   border: none;
-  background-color: transparent;
-  color: black;
+  color: rgb(190, 190, 190);
+  background: black;
   opacity: 0.5;
 }
 .modal-content .carousel .prev:hover,
 .modal-content .carousel .next:hover {
   opacity: 1;
+  color: black;
   background-color: rgba(255, 255, 255, 0.9);
 }
 .modal-content .carousel .prev {
@@ -672,23 +668,30 @@ footer div a:hover {
 .modal-content a {
   color: rgb(190, 190, 190);
   width: 100%;
-  display: block;
   background-color: rgba(255, 255, 255, 0.1);
   text-align: center;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
 }
 @media only screen and (max-width: 767px) {
   .modal {
-    width: 100%;
+    width: 400px;
+    height: 400px;
+    max-width: 90%;
     overflow-y: auto;
-    overflow-x: hidden;
   }
-  .modal-content .carousel {
-    height: 45%;
+  .modal .prev,
+  .modal .next {
+    width: 30px;
+    padding: 13px;
+    font-size: 20px;
   }
 }
 @media only screen and (min-width: 768px) and (max-width: 1023px) {
-  .modal-content .carousel {
-    height: 60%;
+  .modal {
+    top: 45%;
+    width: 600px;
+    height: 600px;
   }
 }
 
@@ -699,15 +702,15 @@ footer div a:hover {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.9);
+  background: rgba(0, 0, 0, 0.9);
   z-index: 1000;
   cursor: pointer;
 }
 
 .close {
   position: absolute;
-  top: 0px;
-  right: 30px;
+  top: -15px;
+  right: 5px;
   font-size: 30px;
   cursor: pointer;
   /* Media Queries */
