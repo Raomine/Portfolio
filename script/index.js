@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const footer = document.querySelector("footer");
   const sectionsColor = document.querySelectorAll("section");
   const text = document.querySelectorAll("body, a");
-  const pColor = document.querySelector(".profile p");
+  const pColor = document.querySelectorAll(".profile p");
   const toggleNavButton = document.querySelector(".toggle-nav");
   const navMenu = document.querySelector("nav");
 
@@ -39,7 +39,9 @@ document.addEventListener("DOMContentLoaded", function () {
       text.classList.toggle("light8");
     });
     toggleNavButton.classList.toggle("light8");
-    pColor.classList.toggle("light9");
+    pColor.forEach((p) => {
+      p.classList.toggle("light9");
+    });
   }
 
   function moveThemeButton() {
@@ -155,33 +157,33 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Sélection du formulaire
-  const form = document.getElementById("contact-form");
+  // Formulaire
+  document
+    .getElementById("contact-form")
+    .addEventListener("submit", function (event) {
+      event.preventDefault();
 
-  form.addEventListener("submit", function (event) {
-    event.preventDefault();
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const message = document.getElementById("message").value;
 
-    const formData = new FormData(form);
+      const formattedData = `Nom : ${name}\nEmail : ${email}\n\nMessage :\n${message}`;
 
-    const xhr = new XMLHttpRequest();
+      const mailtoLink = `mailto:zarour.hicham@gmail.com?subject=Message%20du%20formulaire&body=${encodeURIComponent(
+        formattedData
+      )}`;
 
-    xhr.open("POST", "http://localhost:3000/submit");
+      document.getElementById("name").value = "";
+      document.getElementById("email").value = "";
+      document.getElementById("message").value = "";
 
-    xhr.onload = function () {
-      if (xhr.status === 200) {
-        alert("Soumission de formulaire réussie !");
-        form.reset();
-      } else {
-        alert("Erreur lors de l'envoi du formulaire : " + xhr.statusText);
-      }
-    };
+      window.location.href = mailtoLink;
+    });
 
-    xhr.onerror = function () {
-      alert("Erreur lors de l'envoi de la requête !");
-    };
-
-    xhr.send(formData);
-  });
+  // Footer
+  window.onload = function () {
+    document.querySelector("footer").style.display = "flex";
+  };
 });
 
 // Skillbars
@@ -212,10 +214,16 @@ const projects = {
     description: `Le projet consistait à modifier le site web de l'association Riding Cities pour le faire correspondre à une maquette donnée. Voici les actions entreprises pour atteindre cet objectif : 
     1. Création de la section "Les membres fondateurs" 
     2. Évolution de la section de bas de page avec le bouton de téléchargement`,
-    images: [
-      "../assets/modals/P2-membres-fondateurs.jpg",
-      "../assets/modals/P2-bas-de-page.jpg",
-    ],
+    images: {
+      desktop: [
+        "../assets/modals/P2-membres-fondateurs.jpg",
+        "../assets/modals/P2-bas-de-page.jpg",
+      ],
+      mobile: [
+        "../assets/modals/P2-membres-fondateurs-m.jpg",
+        "../assets/modals/P2-bas-de-page-m.jpg",
+      ],
+    },
   },
 
   project3: {
@@ -263,24 +271,24 @@ const projects = {
     title: "Créez une page web dynamique avec JavaScript",
     description: `Le projet consiste à créer une page web dynamique en utilisant JavaScript, en mettant en pratique les connaissances acquises sur ce langage. L'objectif était de réaliser plusieurs fonctionnalités (galerie d'images, page de connexion, modales) et de travailler avec des données dynamiques provenant d'une API.`,
     images: [
-      "../assets/modals/P6-gallerie.jpg",
-      "../assets/modals/P6-login.jpg",
-      "../assets/modals/P6-modale1.jpg",
-      "../assets/modals/P6-modale2.jpg",
+      "../assets/modals/P6-site1.jpg",
+      "../assets/modals/P6-site2.jpg",
+      "../assets/modals/P6-site3.jpg",
+      "../assets/modals/P6-site4.jpg",
     ],
     link: "https://github.com/Raomine/Projet_6",
   },
 
   project7: {
     title: "Planifiez le développement du site de votre client",
-    description: `Mise en place d'une veille technique : J'ai effectué une recherche approfondie pour identifier les outils, langages et frameworks qui pourraient être utiles. Je les ai ensuite regroupé dans l'outils veille, Wakelet.
-    Définition des besoins techniques : J'ai identifié les besoins techniques du projet, en détaillant les plugins, les librairies et autres solutions nécessaires à sa réalisation.
-    Choix et configuration de l'outil de gestion de projet : J'ai sélectionné Trello, un outil de gestion de projet adapté.
+    description: `Mise en place d'une veille : J'ai effectué une recherche approfondie pour identifier les technologies qui pourraient être utiles. Je les ai ensuite regroupé sur Wakelet.
+    Besoins techniques : J'ai détaillé les plugins, les librairies et autres solutions nécessaires à la réalisation.
+    Outil de gestion de projet : J'ai sélectionné Trello.
     Découpage des tâches : J'ai découpé le projet en différentes tâches, en me concentrant d'abord sur les user stories prioritaires.
-    Préparation de la présentation finale : Enfin, j'ai préparé les supports de présentation pour le client, en agrégeant les différents livrables dans une présentation PowerPoint.`,
+    Enfin, j'ai préparé les supports de présentation pour le client, en agrégeant les différents livrables dans un PowerPoint.`,
     images: [
       "../assets/modals/P7-wakelet.jpg",
-      "../assets/modals/P7-solutions-tech.jpg",
+      "../assets/modals/P7-solution-tech.jpg",
       "../assets/modals/P7-trello.jpg",
       "../assets/modals/P7-powerpoint.jpg",
     ],
@@ -308,7 +316,6 @@ const projects = {
       "../assets/modals/P9-site2.jpg",
       "../assets/modals/P9-site3.jpg",
       "../assets/modals/P9-site4.jpg",
-      "../assets/modals/P9-site5.jpg",
       "../assets/modals/P9-lighthouse.jpg",
     ],
     link: "https://github.com/Raomine/Projet_9",
@@ -335,7 +342,7 @@ const projects = {
       "Ce projet a consisté à développer une application bancaire avec React, Redux et une API. Le frontend est concis et réutilisable. J'ai mis en place l'authentification des utilisateurs, développé la fonctionnalité de modification du nom d'utilisateur. J'ai également ajouté des éléments à la documentation Swagger.",
     images: [
       "../assets/modals/P11-homepage.jpg",
-      "../assets/modals/P11-signin.jpg",
+      "../assets/modals/P11-login.jpg",
       "../assets/modals/P11-user.jpg",
     ],
     link: "https://github.com/Raomine/Projet_11",
@@ -344,6 +351,8 @@ const projects = {
 
 let currentProject = null;
 let currentSlideIndex = 0;
+
+let deviceType = window.innerWidth <= 767 ? "mobile" : "desktop";
 
 function openModal(projectKey) {
   currentProject = projects[projectKey];
@@ -356,7 +365,12 @@ function openModal(projectKey) {
     linkElement.style.display = "none";
   }
 
-  currentSlideIndex = 0;
+  // Initialise currentSlideIndex en fonction du type d'appareil
+  if (window.innerWidth <= 767) {
+    currentSlideIndex = 0; // Index de la première image mobile
+  } else {
+    currentSlideIndex = 0; // Index de la première image desktop
+  }
 
   projectModal.style.display = "block";
   modalOverlay.style.display = "block";
@@ -366,12 +380,24 @@ function openModal(projectKey) {
 }
 
 function updateModalContent() {
-  modalImage.src = currentProject.images[currentSlideIndex];
+  // Vérifiez le type d'appareil et sélectionnez l'image en conséquence
+  modalImage.src = currentProject.images[deviceType][currentSlideIndex];
 
   modalPrev.style.display = currentSlideIndex === 0 ? "none" : "block";
   modalNext.style.display =
-    currentSlideIndex === currentProject.images.length - 1 ? "none" : "block";
+    currentSlideIndex === currentProject.images[deviceType].length - 1
+      ? "none"
+      : "block";
 }
+
+window.addEventListener("resize", function () {
+  // Mettre à jour les images en fonction de la taille de l'écran
+  const newDeviceType = window.innerWidth <= 767 ? "mobile" : "desktop";
+  if (newDeviceType !== deviceType) {
+    deviceType = newDeviceType;
+    updateModalContent();
+  }
+});
 
 let isTransitioning = false;
 
@@ -387,10 +413,8 @@ function prevSlide() {
 }
 
 function nextSlide() {
-  if (
-    !isTransitioning &&
-    currentSlideIndex < currentProject.images.length - 1
-  ) {
+  const numImages = currentProject.images[deviceType].length;
+  if (!isTransitioning && currentSlideIndex < numImages - 1) {
     isTransitioning = true;
     currentSlideIndex++;
     updateModalContent();
