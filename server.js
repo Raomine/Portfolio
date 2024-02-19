@@ -54,7 +54,6 @@ app.post("/submit", (req, res) => {
       res.send("Soumission de formulaire réussie!");
     }
   });
-  res.redirect("https://portfolio-ten-puce-25.vercel.app/");
 });
 
 server.listen(port, function () {

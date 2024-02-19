@@ -155,28 +155,47 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Form submission
-  document.getElementById("button").addEventListener("click", function () {
-    // Effectuer la soumission du formulaire et afficher l'alerte
-    alert("Envoie du message en cours.");
+  document.addEventListener("DOMContentLoaded", function () {
+    // Sélection du formulaire
+    const form = document.getElementById("contact-form");
 
-    // Stocker une valeur dans le stockage local pour indiquer que le formulaire a été soumis avec succès
-    localStorage.setItem("formSubmitted", "true");
+    // Gestionnaire d'événements pour la soumission du formulaire
+    form.addEventListener("submit", function (event) {
+      // Empêcher le comportement par défaut du formulaire
+      event.preventDefault();
+
+      // Récupérer les données du formulaire
+      const formData = new FormData(form);
+
+      // Créer un objet XMLHttpRequest
+      const xhr = new XMLHttpRequest();
+
+      // Configurer la requête
+      xhr.open("POST", "/submit");
+
+      // Gestionnaire d'événements pour la réponse de la requête
+      xhr.onload = function () {
+        if (xhr.status === 200) {
+          // Afficher une alerte si l'envoi du formulaire est réussi
+          alert("Soumission de formulaire réussie !");
+          // Réinitialiser le formulaire si nécessaire
+          form.reset();
+        } else {
+          // Afficher une alerte en cas d'erreur d'envoi du formulaire
+          alert("Erreur lors de l'envoi du formulaire : " + xhr.statusText);
+        }
+      };
+
+      // Gestionnaire d'événements pour la gestion des erreurs de la requête
+      xhr.onerror = function () {
+        // Afficher une alerte en cas d'erreur lors de la requête
+        alert("Erreur lors de l'envoi de la requête !");
+      };
+
+      // Envoyer la requête avec les données du formulaire
+      xhr.send(formData);
+    });
   });
-
-  // Vérifier si le formulaire a été soumis avec succès lors du chargement de la page
-  window.onload = function () {
-    // Vérifier si la valeur est présente dans le stockage local
-    const formSubmitted = localStorage.getItem("formSubmitted");
-
-    // Si la valeur est présente, afficher l'alerte
-    if (formSubmitted === "true") {
-      alert("Message envoyé !");
-
-      // Effacer la valeur du stockage local après avoir affiché l'alerte
-      localStorage.removeItem("formSubmitted");
-    }
-  };
 });
 
 // Skillbars
