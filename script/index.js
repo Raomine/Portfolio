@@ -158,7 +158,7 @@ document.addEventListener("DOMContentLoaded", function () {
   // Form submission
   document.getElementById("button").addEventListener("click", function () {
     // Effectuer la soumission du formulaire et afficher l'alerte
-    alert("Form submission successful!");
+    alert("Envoie du message en cours.");
 
     // Stocker une valeur dans le stockage local pour indiquer que le formulaire a été soumis avec succès
     localStorage.setItem("formSubmitted", "true");
@@ -171,7 +171,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Si la valeur est présente, afficher l'alerte
     if (formSubmitted === "true") {
-      alert("Form submission successful!");
+      alert("Message envoyé !");
 
       // Effacer la valeur du stockage local après avoir affiché l'alerte
       localStorage.removeItem("formSubmitted");
