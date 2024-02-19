@@ -155,10 +155,28 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  // Form
+  // Form submission
   document.getElementById("button").addEventListener("click", function () {
+    // Effectuer la soumission du formulaire et afficher l'alerte
     alert("Form submission successful!");
+
+    // Stocker une valeur dans le stockage local pour indiquer que le formulaire a été soumis avec succès
+    localStorage.setItem("formSubmitted", "true");
   });
+
+  // Vérifier si le formulaire a été soumis avec succès lors du chargement de la page
+  window.onload = function () {
+    // Vérifier si la valeur est présente dans le stockage local
+    const formSubmitted = localStorage.getItem("formSubmitted");
+
+    // Si la valeur est présente, afficher l'alerte
+    if (formSubmitted === "true") {
+      alert("Form submission successful!");
+
+      // Effacer la valeur du stockage local après avoir affiché l'alerte
+      localStorage.removeItem("formSubmitted");
+    }
+  };
 });
 
 // Skillbars
