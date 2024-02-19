@@ -2,16 +2,15 @@ const express = require("express");
 const http = require("http");
 const path = require("path");
 const nodemailer = require("nodemailer");
+const cors = require("cors");
 
 const app = express();
 const server = http.Server(app);
 const port = 3000;
 
-app.options("*", (req, res) => {
-  res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
-  res.sendStatus(200);
-});
+app.use(cors());
+
+app.options("*", cors());
 
 app.set("port", port);
 app.use(express.json());

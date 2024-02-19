@@ -155,46 +155,32 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  document.addEventListener("DOMContentLoaded", function () {
-    // Sélection du formulaire
-    const form = document.getElementById("contact-form");
+  // Sélection du formulaire
+  const form = document.getElementById("contact-form");
 
-    // Gestionnaire d'événements pour la soumission du formulaire
-    form.addEventListener("submit", function (event) {
-      // Empêcher le comportement par défaut du formulaire
-      event.preventDefault();
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
 
-      // Récupérer les données du formulaire
-      const formData = new FormData(form);
+    const formData = new FormData(form);
 
-      // Créer un objet XMLHttpRequest
-      const xhr = new XMLHttpRequest();
+    const xhr = new XMLHttpRequest();
 
-      // Configurer la requête
-      xhr.open("POST", "/submit");
+    xhr.open("POST", "http://localhost:3000/submit");
 
-      // Gestionnaire d'événements pour la réponse de la requête
-      xhr.onload = function () {
-        if (xhr.status === 200) {
-          // Afficher une alerte si l'envoi du formulaire est réussi
-          alert("Soumission de formulaire réussie !");
-          // Réinitialiser le formulaire si nécessaire
-          form.reset();
-        } else {
-          // Afficher une alerte en cas d'erreur d'envoi du formulaire
-          alert("Erreur lors de l'envoi du formulaire : " + xhr.statusText);
-        }
-      };
+    xhr.onload = function () {
+      if (xhr.status === 200) {
+        alert("Soumission de formulaire réussie !");
+        form.reset();
+      } else {
+        alert("Erreur lors de l'envoi du formulaire : " + xhr.statusText);
+      }
+    };
 
-      // Gestionnaire d'événements pour la gestion des erreurs de la requête
-      xhr.onerror = function () {
-        // Afficher une alerte en cas d'erreur lors de la requête
-        alert("Erreur lors de l'envoi de la requête !");
-      };
+    xhr.onerror = function () {
+      alert("Erreur lors de l'envoi de la requête !");
+    };
 
-      // Envoyer la requête avec les données du formulaire
-      xhr.send(formData);
-    });
+    xhr.send(formData);
   });
 });
 
