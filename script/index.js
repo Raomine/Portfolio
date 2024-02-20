@@ -1,4 +1,21 @@
 document.addEventListener("DOMContentLoaded", function () {
+  // Google Fonts
+  function loadGoogleFonts() {
+    let fontLinks = [
+      "https://fonts.googleapis.com/css2?family=Ysabeau+Office&display=swap",
+      "https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap",
+    ];
+
+    fontLinks.forEach(function (link) {
+      let fontLink = document.createElement("link");
+      fontLink.href = link;
+      fontLink.rel = "stylesheet";
+      document.head.appendChild(fontLink);
+    });
+  }
+  loadGoogleFonts();
+
+  // Theme toggler
   const themeButton = document.getElementById("themeButton");
   const header = document.querySelector("header");
   const logo = document.querySelector(".logo");
@@ -14,7 +31,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const toggleNavButton = document.querySelector(".toggle-nav");
   const navMenu = document.querySelector("nav");
 
-  // Theme toggler
   themeButton.addEventListener("click", function () {
     toggleTheme();
     moveThemeButton();
