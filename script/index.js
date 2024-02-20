@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const footer = document.querySelector("footer");
   const sectionsColor = document.querySelectorAll("section");
   const text = document.querySelectorAll("body, a");
-  const pColor = document.querySelectorAll(".profile p");
+  const aboutText = document.querySelector(".about-text");
   const toggleNavButton = document.querySelector(".toggle-nav");
   const navMenu = document.querySelector("nav");
 
@@ -39,13 +39,15 @@ document.addEventListener("DOMContentLoaded", function () {
       text.classList.toggle("light8");
     });
     toggleNavButton.classList.toggle("light8");
-    pColor.forEach((p) => {
-      p.classList.toggle("light9");
-    });
+    aboutText.classList.toggle("light9");
   }
 
   function moveThemeButton() {
     themeButton.classList.toggle("move-right");
+    footer.classList.add("theme-transition"); // Ajoutez la classe immédiatement
+    setTimeout(() => {
+      footer.classList.remove("theme-transition"); // Supprimez la classe après quelques secondes
+    }, 1000);
   }
 
   // Navigation
@@ -146,6 +148,31 @@ document.addEventListener("DOMContentLoaded", function () {
     title.style.fontSize = "13vw";
   }
 
+  // About Text
+  let originalText;
+
+  window.addEventListener("resize", function () {
+    adjustTextLength();
+  });
+
+  window.addEventListener("DOMContentLoaded", function () {
+    originalText = document.querySelector(".about-text").innerHTML;
+    adjustTextLength();
+  });
+
+  function adjustTextLength() {
+    const screenWidth = window.innerWidth;
+    const aboutText = document.querySelector(".about-text");
+
+    if (screenWidth < 768) {
+      aboutText.innerHTML = originalText.slice(0, 391) + "...";
+    } else if (screenWidth < 1024) {
+      aboutText.innerHTML = originalText.slice(0, 703) + "...";
+    } else {
+      aboutText.innerHTML = originalText;
+    }
+  }
+
   // Skillbars
   const skillBars = document.querySelectorAll(".skill-bar");
   skillBars.forEach((skillBar) => {
@@ -230,23 +257,38 @@ const projects = {
     title: "Créez la page d'accueil d'une agence de voyage avec HTML & CSS",
     description:
       "Ce projet consistait à créer la page d'accueil d'une agence de voyage en utilisant HTML et CSS. À travers différentes étapes, j'ai mis en place l'environnement de développement, découpé la maquette, intégré les différents éléments tels que le header, le formulaire de recherche, les filtres, les cartes d'hébergement et d'activités, ainsi que le footer. J'ai également assuré la compatibilité du site avec les différents écrans grâce au responsive design. En respectant les bonnes pratiques et en vérifiant la qualité du code.",
-    images: [
-      "../assets/modals/P3-site1.jpg",
-      "../assets/modals/P3-site2.jpg",
-      "../assets/modals/P3-site3.jpg",
-    ],
+    images: {
+      desktop: [
+        "../assets/modals/P3-site1.jpg",
+        "../assets/modals/P3-site2.jpg",
+        "../assets/modals/P3-site3.jpg",
+      ],
+      mobile: [
+        "../assets/modals/P3-site1-m.jpg",
+        "../assets/modals/P3-site2-m.jpg",
+        "../assets/modals/P3-site3-m.jpg",
+      ],
+    },
   },
 
   project4: {
     title: "Améliorez l'interface d'un site mobile avec des animations CSS",
     description:
       "Au cours de ce projet, j'ai établi un environnement de développement solide, intégré la version mobile de la page d'accueil du site avec des animations CSS harmonieuses, assuré sa réactivité pour différents appareils, et reproduit ce processus pour les pages des restaurants. J'ai maintenu une structure claire et optimisé l'efficacité du code en utilisant Sass et en évitant les duplications inutiles. Enfin, j'ai effectué une revue minutieuse pour garantir la conformité aux maquettes et la qualité du rendu final.",
-    images: [
-      "../assets/modals/P4-site1.jpg",
-      "../assets/modals/P4-site2.jpg",
-      "../assets/modals/P4-site3.jpg",
-      "../assets/modals/P4-site4.jpg",
-    ],
+    images: {
+      desktop: [
+        "../assets/modals/P4-site1.jpg",
+        "../assets/modals/P4-site2.jpg",
+        "../assets/modals/P4-site3.jpg",
+        "../assets/modals/P4-site4.jpg",
+      ],
+      mobile: [
+        "../assets/modals/P4-site1-m.jpg",
+        "../assets/modals/P4-site2-m.jpg",
+        "../assets/modals/P4-site3-m.jpg",
+        "../assets/modals/P4-site4-m.jpg",
+      ],
+    },
     link: "https://github.com/Raomine/Projet_4",
   },
 
@@ -258,24 +300,40 @@ const projects = {
     Étape 3 : Ajout des bullet points au slider
     Étape 4 : Modification du slide au clic sur le bouton
     Étape 5 : Mise en place du défilement infini sur le carrousel`,
-    images: [
-      "../assets/modals/P5-carousel1.jpg",
-      "../assets/modals/P5-carousel2.jpg",
-      "../assets/modals/P5-carousel3.jpg",
-      "../assets/modals/P5-carousel4.jpg",
-    ],
+    images: {
+      desktop: [
+        "../assets/modals/P5-carousel1.jpg",
+        "../assets/modals/P5-carousel2.jpg",
+        "../assets/modals/P5-carousel3.jpg",
+        "../assets/modals/P5-carousel4.jpg",
+      ],
+      mobile: [
+        "../assets/modals/P5-carousel1-m.jpg",
+        "../assets/modals/P5-carousel2-m.jpg",
+        "../assets/modals/P5-carousel3-m.jpg",
+        "../assets/modals/P5-carousel4-m.jpg",
+      ],
+    },
     link: "https://github.com/Raomine/Projet_5",
   },
 
   project6: {
     title: "Créez une page web dynamique avec JavaScript",
     description: `Le projet consiste à créer une page web dynamique en utilisant JavaScript, en mettant en pratique les connaissances acquises sur ce langage. L'objectif était de réaliser plusieurs fonctionnalités (galerie d'images, page de connexion, modales) et de travailler avec des données dynamiques provenant d'une API.`,
-    images: [
-      "../assets/modals/P6-site1.jpg",
-      "../assets/modals/P6-site2.jpg",
-      "../assets/modals/P6-site3.jpg",
-      "../assets/modals/P6-site4.jpg",
-    ],
+    images: {
+      desktop: [
+        "../assets/modals/P6-site1.jpg",
+        "../assets/modals/P6-site2.jpg",
+        "../assets/modals/P6-site3.jpg",
+        "../assets/modals/P6-site4.jpg",
+      ],
+      mobile: [
+        "../assets/modals/P6-site1-m.jpg",
+        "../assets/modals/P6-site2-m.jpg",
+        "../assets/modals/P6-site3-m.jpg",
+        "../assets/modals/P6-site4-m.jpg",
+      ],
+    },
     link: "https://github.com/Raomine/Projet_6",
   },
 
@@ -286,24 +344,40 @@ const projects = {
     Outil de gestion de projet : J'ai sélectionné Trello.
     Découpage des tâches : J'ai découpé le projet en différentes tâches, en me concentrant d'abord sur les user stories prioritaires.
     Enfin, j'ai préparé les supports de présentation pour le client, en agrégeant les différents livrables dans un PowerPoint.`,
-    images: [
-      "../assets/modals/P7-wakelet.jpg",
-      "../assets/modals/P7-solution-tech.jpg",
-      "../assets/modals/P7-trello.jpg",
-      "../assets/modals/P7-powerpoint.jpg",
-    ],
+    images: {
+      desktop: [
+        "../assets/modals/P7-wakelet.jpg",
+        "../assets/modals/P7-solution-tech.jpg",
+        "../assets/modals/P7-trello.jpg",
+        "../assets/modals/P7-powerpoint.jpg",
+      ],
+      mobile: [
+        "../assets/modals/P7-wakelet-m.jpg",
+        "../assets/modals/P7-solution-tech-m.jpg",
+        "../assets/modals/P7-trello-m.jpg",
+        "../assets/modals/P7-powerpoint-m.jpg",
+      ],
+    },
   },
 
   project8: {
     title: "Créez une application web de location immobilière avec React",
     description:
       "Le projet consiste à créer une application web de location immobilière avec React. Les étapes clés incluent l'initialisation du projet avec Create React App, l'ajout de React Router pour le routage, la création des pages principales (accueil, À propos, page d'erreur), le développement de fonctionnalités spécifiques comme le carrousel pour les propriétés, la gestion des erreurs d'ID, et enfin la vérification globale du site. À chaque étape, la mise en page est optimisée avec Sass et les composants sont réutilisés autant que possible.",
-    images: [
-      "../assets/modals/P8-homepage.jpg",
-      "../assets/modals/P8-about.jpg",
-      "../assets/modals/P8-error.jpg",
-      "../assets/modals/P8-logement.jpg",
-    ],
+    images: {
+      desktop: [
+        "../assets/modals/P8-homepage.jpg",
+        "../assets/modals/P8-about.jpg",
+        "../assets/modals/P8-error.jpg",
+        "../assets/modals/P8-logement.jpg",
+      ],
+      mobile: [
+        "../assets/modals/P8-homepage-m.jpg",
+        "../assets/modals/P8-about-m.jpg",
+        "../assets/modals/P8-error-m.jpg",
+        "../assets/modals/P8-logement-m.jpg",
+      ],
+    },
     link: "https://github.com/Raomine/Projet_8",
   },
 
@@ -311,13 +385,22 @@ const projects = {
     title: "Optimisez le référencement d'un site de photographe",
     description:
       " J'ai, avec Lighthouse, analysé le code source, identifié les améliorations nécessaires, optimisé les performances, le SEO technique, intégré le référencement local et les réseaux sociaux, corrigé l'accessibilité, et généré des rapports finaux. Ce processus structuré a permis d'améliorer les performances et d'optimiser le référencement du site.",
-    images: [
-      "../assets/modals/P9-site1.jpg",
-      "../assets/modals/P9-site2.jpg",
-      "../assets/modals/P9-site3.jpg",
-      "../assets/modals/P9-site4.jpg",
-      "../assets/modals/P9-lighthouse.jpg",
-    ],
+    images: {
+      desktop: [
+        "../assets/modals/P9-site1.jpg",
+        "../assets/modals/P9-site2.jpg",
+        "../assets/modals/P9-site3.jpg",
+        "../assets/modals/P9-site4.jpg",
+        "../assets/modals/P9-lighthouse.jpg",
+      ],
+      mobile: [
+        "../assets/modals/P9-site1-m.jpg",
+        "../assets/modals/P9-site2-m.jpg",
+        "../assets/modals/P9-site3-m.jpg",
+        "../assets/modals/P9-site4-m.jpg",
+        "../assets/modals/P9-lighthouse-m.jpg",
+      ],
+    },
     link: "https://github.com/Raomine/Projet_9",
   },
 
@@ -325,14 +408,24 @@ const projects = {
     title: "Débuggez le site d'une agence d'événementielt",
     description:
       "Dans ce projet de débogage pour une agence événementielle, j'ai suivi un processus méthodique en quatre étapes clés : mise en place de l'environnement de développement, identification et réparation des bugs, rédaction d'un cahier de recette, et ajout de tests supplémentaires.",
-    images: [
-      "../assets/modals/P10-site1.jpg",
-      "../assets/modals/P10-site2.jpg",
-      "../assets/modals/P10-site3.jpg",
-      "../assets/modals/P10-site4.jpg",
-      "../assets/modals/P10-site5.jpg",
-      "../assets/modals/P10-cahier-de-recette.jpg",
-    ],
+    images: {
+      desktop: [
+        "../assets/modals/P10-site1.jpg",
+        "../assets/modals/P10-site2.jpg",
+        "../assets/modals/P10-site3.jpg",
+        "../assets/modals/P10-site4.jpg",
+        "../assets/modals/P10-site5.jpg",
+        "../assets/modals/P10-cahier-de-recette.jpg",
+      ],
+      mobile: [
+        "../assets/modals/P10-site1-m.jpg",
+        "../assets/modals/P10-site2-m.jpg",
+        "../assets/modals/P10-site3-m.jpg",
+        "../assets/modals/P10-site4-m.jpg",
+        "../assets/modals/P10-site5-m.jpg",
+        "../assets/modals/P10-cahier-de-recette-m.jpg",
+      ],
+    },
     link: "https://github.com/Raomine/Projet_10",
   },
 
@@ -340,11 +433,18 @@ const projects = {
     title: "Implémentez le front-end d'une application bancaire avec React",
     description:
       "Ce projet a consisté à développer une application bancaire avec React, Redux et une API. Le frontend est concis et réutilisable. J'ai mis en place l'authentification des utilisateurs, développé la fonctionnalité de modification du nom d'utilisateur. J'ai également ajouté des éléments à la documentation Swagger.",
-    images: [
-      "../assets/modals/P11-homepage.jpg",
-      "../assets/modals/P11-login.jpg",
-      "../assets/modals/P11-user.jpg",
-    ],
+    images: {
+      desktop: [
+        "../assets/modals/P11-homepage.jpg",
+        "../assets/modals/P11-login.jpg",
+        "../assets/modals/P11-user.jpg",
+      ],
+      mobile: [
+        "../assets/modals/P11-homepage-m.jpg",
+        "../assets/modals/P11-login-m.jpg",
+        "../assets/modals/P11-user-m.jpg",
+      ],
+    },
     link: "https://github.com/Raomine/Projet_11",
   },
 };
@@ -365,11 +465,10 @@ function openModal(projectKey) {
     linkElement.style.display = "none";
   }
 
-  // Initialise currentSlideIndex en fonction du type d'appareil
   if (window.innerWidth <= 767) {
-    currentSlideIndex = 0; // Index de la première image mobile
+    currentSlideIndex = 0;
   } else {
-    currentSlideIndex = 0; // Index de la première image desktop
+    currentSlideIndex = 0;
   }
 
   projectModal.style.display = "block";
@@ -380,7 +479,6 @@ function openModal(projectKey) {
 }
 
 function updateModalContent() {
-  // Vérifiez le type d'appareil et sélectionnez l'image en conséquence
   modalImage.src = currentProject.images[deviceType][currentSlideIndex];
 
   modalPrev.style.display = currentSlideIndex === 0 ? "none" : "block";
@@ -391,7 +489,6 @@ function updateModalContent() {
 }
 
 window.addEventListener("resize", function () {
-  // Mettre à jour les images en fonction de la taille de l'écran
   const newDeviceType = window.innerWidth <= 767 ? "mobile" : "desktop";
   if (newDeviceType !== deviceType) {
     deviceType = newDeviceType;

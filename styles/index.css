@@ -127,7 +127,7 @@ body {
   color: white;
 }
 
-#about .profile p.light9 {
+#about .about-text.light9 {
   background: #03579f;
 }
 
@@ -363,19 +363,23 @@ section .title {
 }
 
 #about .profile {
-  height: 88%;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
   gap: 2rem;
   padding: 2rem;
 }
 #about img {
-  max-width: 100%;
+  width: 80%;
+  height: 45%;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 #about .about-text {
+  width: 80%;
+  height: 45%;
   font-size: 1.1rem;
   line-height: 1.6;
   background: #131313;
@@ -598,6 +602,10 @@ footer div a:hover {
   footer .all-right {
     display: none;
   }
+}
+
+footer.theme-transition {
+  opacity: 0;
 }
 
 .modal {
