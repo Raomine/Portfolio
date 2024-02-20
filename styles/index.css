@@ -362,30 +362,33 @@ section .title {
   font-size: 13vw;
 }
 
+#about {
+  /* Media Queries */
+}
 #about .profile {
   height: 80%;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 2rem;
   padding: 2rem;
 }
 #about img {
-  width: 80%;
-  height: 45%;
+  width: 45%;
+  height: 80%;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 #about .about-text {
-  width: 80%;
-  height: 45%;
+  width: 45%;
+  height: 80%;
   font-size: 1.1rem;
   line-height: 1.6;
   background: #131313;
   max-height: 80%;
   overflow: auto;
   padding: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 }
 #about .about-text h2 {
   margin-bottom: 0.5rem;
@@ -394,6 +397,46 @@ section .title {
 #about .about-text p {
   margin-bottom: 1rem;
   padding: 5px;
+}
+@media only screen and (max-width: 767px) {
+  #about .profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  #about img {
+    width: 80%;
+    height: 65%;
+  }
+  #about .about-text {
+    width: 80%;
+    height: 25%;
+    font-size: 0.9rem;
+    line-height: 1.3;
+    padding: 10px;
+  }
+  #about .about-text h2 {
+    font-size: 1.3rem;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  #about .profile {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  #about img {
+    width: 80%;
+    height: 45%;
+  }
+  #about .about-text {
+    width: 80%;
+    height: 45%;
+  }
 }
 
 #skills {

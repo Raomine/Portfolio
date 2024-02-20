@@ -447,7 +447,6 @@ section {
     .profile {
         height: 80%;
         display: flex;
-        flex-direction: column;
         justify-content: center;
         align-items: center;
         gap: 2rem;
@@ -455,21 +454,22 @@ section {
     }
 
     img {
-        width: 80%;
-        height: 45%;
+        width: 45%;
+        height: 80%;
         border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
     }
 
     .about-text {
-        width: 80%;
-        height: 45%;
+        width: 45%;
+        height: 80%;
         font-size: 1.1rem;
         line-height: 1.6;
         background: $backgroundHNFNP;
         max-height: 80%;
         overflow: auto;
         padding: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
 
         h2 {
             margin-bottom: 0.5rem;
@@ -479,6 +479,54 @@ section {
         p {
             margin-bottom: 1rem;
             padding: 5px;
+        }
+    }
+
+    /* Media Queries */
+    @media only screen and (max-width: 767px) {
+        .profile {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+        }
+
+        img {
+            width: 80%;
+            height: 65%;
+        }
+
+        .about-text {
+            width: 80%;
+            height: 25%;
+            font-size: 0.9rem;
+            line-height: 1.3;
+            padding: 10px;
+
+            h2 {
+                font-size: 1.3rem;
+            }
+        }
+    }
+
+    @media only screen and (min-width: 768px) and (max-width: 1023px) {
+        .profile {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        img {
+            width: 80%;
+            height: 45%;
+        }
+
+        .about-text {
+            width: 80%;
+            height: 45%;
         }
     }
 }
