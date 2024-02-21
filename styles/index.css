@@ -168,7 +168,6 @@ header {
   justify-content: center;
   align-items: center;
   overflow-x: hidden;
-  /* Media Queries */
 }
 header .ball {
   width: 100px;
@@ -310,7 +309,6 @@ section {
 section .header {
   background: #131313;
   box-shadow: 0px 13px 13px 0px rgba(0, 0, 0, 0.33);
-  /* Media Queries */
 }
 section .header .logo {
   cursor: pointer;
@@ -362,9 +360,6 @@ section .title {
   font-size: 13vw;
 }
 
-#about {
-  /* Media Queries */
-}
 #about .profile {
   height: 80%;
   display: flex;
@@ -439,9 +434,6 @@ section .title {
   }
 }
 
-#skills {
-  /* Media Queries */
-}
 #skills .skills {
   height: 88%;
   display: flex;
@@ -546,9 +538,6 @@ section .title {
   display: block;
 }
 
-#contact {
-  /* Media Queries */
-}
 #contact p {
   margin-left: 10px;
 }
@@ -617,7 +606,6 @@ footer {
   flex-direction: row-reverse;
   justify-content: space-between;
   align-items: center;
-  /* Media Queries */
 }
 footer .logo h2 {
   font-size: 2em;
@@ -663,7 +651,6 @@ footer.theme-transition {
   height: 800px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 1000;
-  /* Media Queries */
 }
 .modal-content {
   width: 100%;
@@ -765,7 +752,6 @@ footer.theme-transition {
   right: 5px;
   font-size: 30px;
   cursor: pointer;
-  /* Media Queries */
 }
 @media only screen and (max-width: 767px) {
   .close {
