@@ -505,10 +505,9 @@ function updateModalContent() {
 }
 
 window.addEventListener("resize", function () {
-  const newDeviceType = window.innerWidth <= 767 ? "mobile" : "desktop";
-  if (newDeviceType !== deviceType) {
-    deviceType = newDeviceType;
-    updateModalContent();
+  if (projectModal.style.display === "block") {
+    let e = window.innerWidth <= 767 ? "mobile" : "desktop";
+    e !== deviceType && ((deviceType = e), updateModalContent());
   }
 });
 
