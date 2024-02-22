@@ -50,10 +50,10 @@
 }
 @keyframes fill {
   0% {
-    width: 3%;
+    width: 10%;
   }
   100% {
-    width: 4%;
+    width: 13%;
   }
 }
 @keyframes fill-hover {
@@ -338,9 +338,10 @@ section .header nav a {
   font-weight: bold;
   letter-spacing: 1px;
   padding-bottom: 5px;
+  transition: color 0.3s ease;
 }
 section .header nav a:hover {
-  color: #e2c1ff;
+  color: transparent;
 }
 @media only screen and (max-width: 767px) {
   section .header .logo h2 {
@@ -355,7 +356,6 @@ section#about, section#projects, section#skills, section#contact {
   background: rgb(30, 41, 59);
 }
 section .title {
-  border: 1px solid #100024;
   transition: font-size 1s ease;
   font-size: 13vw;
 }
@@ -438,14 +438,15 @@ section .title {
   height: 88%;
   display: flex;
   justify-content: space-around;
+  align-items: center;
 }
 #skills .skills .front-end {
   width: 45%;
-  height: 100%;
+  height: 95%;
 }
 #skills .skills .back-end {
   width: 45%;
-  height: 100%;
+  height: 95%;
 }
 #skills .skills ul {
   list-style: none;
@@ -474,9 +475,7 @@ section .title {
   width: var(--skill-level);
   border-radius: 2.5rem;
   background: #4caf50;
-}
-#skills .skills .skill-bar:hover .skill-level {
-  animation: fill-hover 1s forwards;
+  transition: width 0.5s ease;
 }
 #skills .skills .skill-level.infinite {
   animation: fill 0.3s infinite alternate;
@@ -489,8 +488,10 @@ section .title {
   font-weight: bold;
 }
 @media only screen and (max-width: 767px) {
-  #skills .skills {
+  #skills {
     height: auto;
+  }
+  #skills .skills {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -540,6 +541,7 @@ section .title {
 
 #contact p {
   margin-left: 10px;
+  margin-bottom: 0;
 }
 #contact .form-container {
   width: 100%;
@@ -719,8 +721,8 @@ footer.theme-transition {
     max-width: 90%;
     overflow-y: auto;
   }
-  .modal .prev,
-  .modal .next {
+  .modal .carousel .prev,
+  .modal .carousel .next {
     width: 30px;
     padding: 13px;
     font-size: 20px;

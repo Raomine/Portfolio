@@ -189,17 +189,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
-  // Skillbars
-  const skillBars = document.querySelectorAll(".skill-bar");
-  skillBars.forEach((skillBar) => {
-    skillBar.addEventListener("mouseover", () => {
-      startAnimation(skillBar);
-    });
-    skillBar.addEventListener("mouseout", () => {
-      stopAnimation(skillBar);
-    });
-  });
-
   // Formulaire
   document
     .getElementById("contact-form")
@@ -230,10 +219,20 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // Skillbars
+const skillBars = document.querySelectorAll(".skill-bar");
+skillBars.forEach((skillBar) => {
+  skillBar.addEventListener("mouseover", () => {
+    startAnimation(skillBar);
+  });
+  skillBar.addEventListener("mouseout", () => {
+    stopAnimation(skillBar);
+  });
+});
+
 function startAnimation(element) {
   const skillLevel = element.querySelector(".skill-level");
-  skillLevel.style.width = "var(--skill-level)";
   skillLevel.classList.remove("infinite");
+  skillLevel.style.width = "13%";
 }
 
 function stopAnimation(element) {
