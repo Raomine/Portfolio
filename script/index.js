@@ -30,6 +30,8 @@ document.addEventListener("DOMContentLoaded", function () {
   const aboutText = document.querySelector(".about-text");
   const toggleNavButton = document.querySelector(".toggle-nav");
   const navMenu = document.querySelector("nav");
+  const shadows = document.querySelectorAll(".shadows");
+  const project = document.querySelectorAll(".project");
 
   themeButton.addEventListener("click", function () {
     toggleTheme();
@@ -56,6 +58,13 @@ document.addEventListener("DOMContentLoaded", function () {
     });
     toggleNavButton.classList.toggle("light8");
     aboutText.classList.toggle("light9");
+    shadows.forEach((shadow) => {
+      shadow.classList.toggle("light10");
+    });
+    footer.classList.toggle("light11");
+    project.forEach((p) => {
+      p.classList.toggle("light12");
+    });
   }
 
   function moveThemeButton() {

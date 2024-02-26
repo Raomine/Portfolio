@@ -84,7 +84,7 @@ body {
 }
 
 .logo.light2 {
-  background: #03579f;
+  background: #5680E9;
 }
 
 #skills .skills .skill-bar.light3 {
@@ -97,22 +97,22 @@ body {
 }
 
 .animated-text span.light5 {
-  background: #03579f;
+  background: #5680E9;
 }
 
 .header.light6 {
-  background: #03579f;
+  background: #5680E9;
 }
 
 .light6 {
-  background: #03579f;
+  background: #5680E9;
 }
 
 #about.light7,
 #projects.light7,
 #skills.light7,
 #contact.light7 {
-  background: #b0e5ff;
+  background: #84CEEB;
 }
 
 .light8 {
@@ -128,7 +128,31 @@ body {
 }
 
 #about .about-text.light9 {
-  background: #03579f;
+  background: #5680E9;
+}
+
+.shadows.light10 {
+  box-shadow: 0px 10px 25px 0px rgba(0, 0, 0, 0.33);
+}
+
+#about .shadows.light10 {
+  box-shadow: 0px 10px 25px 0px rgba(0, 0, 0, 0.33);
+}
+
+#contact .shadows.light10 {
+  box-shadow: 0px 10px 25px 0px rgba(0, 0, 0, 0.33);
+}
+
+.light11 {
+  box-shadow: 0px -10px 25px 0px rgba(0, 0, 0, 0.33);
+}
+
+#projects .project.light12 {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+#projects .project.light12:hover {
+  transform: translateY(5px);
+  box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.33);
 }
 
 .animated-text {
@@ -153,7 +177,7 @@ body {
 }
 
 .animated-text span {
-  background: #100024;
+  background: #0C0032;
 }
 
 header {
@@ -183,7 +207,7 @@ header .ball {
 header .ball.move-right {
   transform: translateX(calc(100vw - 140px));
   background: rgb(255, 255, 106);
-  color: #100024;
+  color: #0C0032;
 }
 header .ball::before,
 header .ball::after {
@@ -214,8 +238,8 @@ header .ball.move-right::after {
 }
 header .logo {
   width: 100%;
-  background: #100024;
-  box-shadow: 0px 0px 50px 13px rgba(255, 255, 255, 0.5);
+  background: #0C0032;
+  box-shadow: 0px 0px 40px 10px rgba(255, 255, 255, 0.5);
 }
 header .logo h1 {
   font-size: 4em;
@@ -268,7 +292,7 @@ header .toggle-nav:hover {
   header .ball.move-right {
     transform: translateX(calc(100vw - 125px));
     background: rgb(255, 255, 106);
-    color: #100024;
+    color: #0C0032;
   }
   header h3 {
     font-size: 1em;
@@ -307,8 +331,8 @@ section {
   box-sizing: border-box;
 }
 section .header {
-  background: #131313;
-  box-shadow: 0px 13px 13px 0px rgba(0, 0, 0, 0.33);
+  background: #19181A;
+  box-shadow: 0px 10px 25px 0px rgba(190, 190, 190, 0.33);
 }
 section .header .logo {
   cursor: pointer;
@@ -353,7 +377,7 @@ section .header nav a:hover {
   }
 }
 section#about, section#projects, section#skills, section#contact {
-  background: rgb(30, 41, 59);
+  background: #303C6C;
 }
 section .title {
   transition: font-size 1s ease;
@@ -372,18 +396,18 @@ section .title {
   width: 45%;
   height: 80%;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 10px 25px 0px rgba(190, 190, 190, 0.33);
 }
 #about .about-text {
   width: 45%;
   height: 80%;
   font-size: 1.1rem;
   line-height: 1.6;
-  background: #131313;
+  background: #19181A;
   max-height: 80%;
   overflow: auto;
   padding: 15px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  box-shadow: 0px 10px 25px 0px rgba(190, 190, 190, 0.33);
 }
 #about .about-text h2 {
   margin-bottom: 0.5rem;
@@ -515,6 +539,7 @@ section .title {
   flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
+  padding: 15px 0;
 }
 #projects .project {
   width: calc(20% - 40px);
@@ -524,12 +549,12 @@ section .title {
   min-height: 300px;
   box-sizing: border-box;
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 10px rgba(190, 190, 190, 0.1);
   transition: transform 0.3s ease;
 }
 #projects .project:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+  transform: translateY(5px);
+  box-shadow: 0 5px 15px rgba(190, 190, 190, 0.33);
 }
 #projects .project img {
   width: 100%;
@@ -582,6 +607,7 @@ section .title {
 #contact .form-container img {
   width: 45%;
   min-height: 60%;
+  box-shadow: 0px 10px 25px 0px rgba(190, 190, 190, 0.33);
 }
 @media only screen and (max-width: 767px) {
   #contact .form-container {
@@ -601,10 +627,10 @@ section .title {
 
 footer {
   display: none;
-  background: #131313;
+  background: #19181A;
   padding: 20px;
   text-align: center;
-  box-shadow: 0px -13px 13px 0px rgba(0, 0, 0, 0.33);
+  box-shadow: 0px -10px 25px 0px rgba(190, 190, 190, 0.33);
   flex-direction: row-reverse;
   justify-content: space-between;
   align-items: center;
@@ -612,6 +638,7 @@ footer {
 footer .logo h2 {
   font-size: 2em;
   font-family: "Ysabeau Office", sans-serif;
+  text-shadow: 2px 2px 4px rgb(190, 190, 190);
   margin: 0;
 }
 footer .all-right {
@@ -651,7 +678,6 @@ footer.theme-transition {
   background: transparent;
   width: 800px;
   height: 800px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 1000;
 }
 .modal-content {

@@ -3,14 +3,14 @@ $textColor: rgb(190, 190, 190);
 $textColor2: white;
 $ballColor: #333;
 $ballColor2: rgb(255, 255, 106);
-$ballText: #100024;
+$backgroundLogoNBallText: #0C0032;
 $ballAB: rgba(255, 255, 255, 0.1);
 $ballAB2: rgba(255, 255, 255, 0.5);
 $aNButtonHover: transparent;
-$backgroundHNFNP: #131313;
-$backgroundLight: #03579f;
-$backgroundSection: rgb(30, 41, 59);
-$backgroundSection2: #b0e5ff;
+$backgroundHNFNP: #19181A;
+$backgroundLight: #5680E9;
+$backgroundSection: #303C6C;
+$backgroundSection2: #84CEEB;
 $skillBarr: #4caf50;
 $backgroundButton: #e2c1ff;
 $backgroundModal: transparent;
@@ -163,6 +163,31 @@ body {
     background: $backgroundLight;
 }
 
+.shadows.light10 {
+    box-shadow: 0px 10px 25px 0px rgba(0, 0, 0, 0.33);
+}
+
+#about .shadows.light10 {
+    box-shadow: 0px 10px 25px 0px rgba(0, 0, 0, 0.33);
+}
+
+#contact .shadows.light10 {
+    box-shadow: 0px 10px 25px 0px rgba(0, 0, 0, 0.33);
+}
+
+.light11 {
+    box-shadow: 0px -10px 25px 0px rgba(0, 0, 0, 0.33);
+}
+
+#projects .project.light12 {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+    &:hover {
+        transform: translateY(5px);
+        box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.33);
+    }
+}
+
 .animated-text {
     display: none;
     position: fixed;
@@ -185,7 +210,7 @@ body {
 }
 
 .animated-text span {
-    background: $ballText;
+    background: $backgroundLogoNBallText;
 }
 
 header {
@@ -217,7 +242,7 @@ header {
     .ball.move-right {
         transform: translateX(calc(100vw - 140px));
         background: $ballColor2;
-        color: $ballText;
+        color: $backgroundLogoNBallText;
     }
 
     .ball::before,
@@ -255,8 +280,8 @@ header {
 
     .logo {
         width: 100%;
-        background: #100024;
-        box-shadow: 0px 0px 50px 13px rgba(255, 255, 255, 0.5);
+        background: $backgroundLogoNBallText;
+        box-shadow: 0px 0px 40px 10px rgba(255, 255, 255, 0.5);
 
         h1 {
             font-size: 4em;
@@ -320,7 +345,7 @@ header {
         .ball.move-right {
             transform: translateX(calc(100vw - 125px));
             background: rgb(255, 255, 106);
-            color: $ballText;
+            color: $backgroundLogoNBallText;
         }
 
         h3 {
@@ -372,7 +397,7 @@ section {
 
     .header {
         background: $backgroundHNFNP;
-        box-shadow: 0px 13px 13px 0px rgba(0, 0, 0, 0.33);
+        box-shadow: 0px 10px 25px 0px rgba(190, 190, 190, 0.33);
 
         .logo {
             cursor: pointer;
@@ -454,7 +479,7 @@ section {
         width: 45%;
         height: 80%;
         border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        box-shadow: 0px 10px 25px 0px rgba(190, 190, 190, 0.33)
     }
 
     .about-text {
@@ -466,7 +491,8 @@ section {
         max-height: 80%;
         overflow: auto;
         padding: 15px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+
+        box-shadow: 0px 10px 25px 0px rgba(190, 190, 190, 0.33);
 
         h2 {
             margin-bottom: 0.5rem;
@@ -621,6 +647,7 @@ section {
         flex-wrap: wrap;
         justify-content: space-around;
         align-items: center;
+        padding: 15px 0;
     }
 
     .project {
@@ -631,12 +658,12 @@ section {
         min-height: 300px;
         box-sizing: border-box;
         border-radius: 8px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 0 10px rgba(190, 190, 190, 0.1);
         transition: transform 0.3s ease;
 
         &:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+            transform: translateY(5px);
+            box-shadow: 0 5px 15px rgba(190, 190, 190, 0.33);
         }
 
         img {
@@ -698,6 +725,7 @@ section {
         img {
             width: 45%;
             min-height: 60%;
+            box-shadow: 0px 10px 25px 0px rgba(190, 190, 190, 0.33);
         }
     }
 
@@ -725,7 +753,7 @@ footer {
     background: $backgroundHNFNP;
     padding: 20px;
     text-align: center;
-    box-shadow: 0px -13px 13px 0px rgba(0, 0, 0, 0.33);
+    box-shadow: 0px -10px 25px 0px rgba(190, 190, 190, 0.33);
     flex-direction: row-reverse;
     justify-content: space-between;
     align-items: center;
@@ -734,6 +762,7 @@ footer {
         h2 {
             font-size: 2em;
             font-family: "Ysabeau Office", sans-serif;
+            text-shadow: 2px 2px 4px $textColor;
             margin: 0;
         }
     }
@@ -782,7 +811,6 @@ footer.theme-transition {
     background: $backgroundModal;
     width: 800px;
     height: 800px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     z-index: 1000;
 
     &-content {
