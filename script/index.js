@@ -32,6 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const navMenu = document.querySelector("nav");
   const shadows = document.querySelectorAll(".shadows");
   const project = document.querySelectorAll(".project");
+  const aboutImg = document.querySelector(".img");
 
   themeButton.addEventListener("click", function () {
     toggleTheme();
@@ -65,6 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
     project.forEach((p) => {
       p.classList.toggle("light12");
     });
+    aboutImg.classList.toggle("black-and-white");
   }
 
   function moveThemeButton() {
