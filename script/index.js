@@ -227,14 +227,17 @@ document.addEventListener("DOMContentLoaded", function () {
   window.onload = function () {
     document.querySelector("footer").style.display = "flex";
   };
+});
 
-  // Itemscope
-  document
-    .getElementById("contact-link")
-    .addEventListener("click", function () {
-      const email = "zarour.hicham@gmail.com";
-      this.setAttribute("href", "mailto:" + email);
-    });
+// H2 
+window.addEventListener('load', () => {
+  setTimeout(() => {
+      const h2Elements = document.querySelectorAll('h2');
+      
+      h2Elements.forEach(h2 => {
+          h2.style.display = 'block'; 
+      });
+  }, 3000);
 });
 
 // Skillbars
