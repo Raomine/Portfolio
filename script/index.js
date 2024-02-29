@@ -227,6 +227,14 @@ document.addEventListener("DOMContentLoaded", function () {
   window.onload = function () {
     document.querySelector("footer").style.display = "flex";
   };
+
+  // Itemscope
+  document
+    .getElementById("contact-link")
+    .addEventListener("click", function () {
+      const email = "zarour.hicham@gmail.com";
+      this.setAttribute("href", "mailto:" + email);
+    });
 });
 
 // Skillbars
