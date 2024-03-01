@@ -229,14 +229,14 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 });
 
-// H2 
-window.addEventListener('load', () => {
+// H2
+window.addEventListener("load", () => {
   setTimeout(() => {
-      const h2Elements = document.querySelectorAll('h2');
-      
-      h2Elements.forEach(h2 => {
-          h2.style.display = 'block'; 
-      });
+    const h2Elements = document.querySelectorAll("h2");
+
+    h2Elements.forEach((h2) => {
+      h2.style.display = "block";
+    });
   }, 3000);
 });
 
